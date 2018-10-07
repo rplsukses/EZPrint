@@ -1,3 +1,59 @@
 <resources>
     <string name="app_name">EZPrint</string>
+    <string name="title_activity_login">LoginActivity</string>
+    <string name="tab_sign_in">Sign In</string>
+    <string name="tab_sign_up">Sign Up</string>
+    <string name="tab_location">Location</string>
+    <string name="tab_category">Category</string>
+    <string name="tab_progress">In Progress</string>
+    <string name="tab_done">Completed</string>
+    <string name="action_settings">Settings</string>
+    <string name="section_format">Hello World from section: %1$d</string>
+
+    <string name="email">Email</string>
+    <string name="password">Password</string>
+    <string name="nama">Nama</string>
+
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+
+    <string name="title_activity_splashscreen">SplashscreenActivity</string>
+    <string name="dummy_button">Dummy Button</string>
+    <string name="dummy_content">DUMMY\nCONTENT</string>
+
+    <string-array name="list_kategori">
+        <item>Document</item>
+        <item>Poster</item>
+        <item>Banner</item>
+        <item>Photo</item>
+        <item>ID Card</item>
+        <item>Sticker</item>
+    </string-array>
+
+    <string-array name="list_kertas">
+        <item>A3</item>
+        <item>A4</item>
+        <item>A5</item>
+        <item>A6</item>
+        <item>B5</item>
+        <item>F4</item>
+        <item>Legal</item>
+        <item>Letter</item>
+    </string-array>
+
+    <string-array name="list_mitra">
+        <item>Printku</item>
+        <item>Mitra Jaya</item>
+        <item>Cetakku</item>
+        <item>Papyrus</item>
+        <item>Gekko</item>
+        <item>Kopma</item>
+    </string-array>
+
+    <string name="menu_profile">Profile</string>
+    <string name="menu_pesan">Messages</string>
+    <string name="menu_history">History</string>
+    <string name="menu_help">Help</string>
+    <string name="menu_info">About Us</string>
+    <string name="menu_notification">Notifications</string>
+    <string name="menu_setting">Setting</string>
 </resources>
