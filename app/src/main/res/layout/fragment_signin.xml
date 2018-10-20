@@ -15,8 +15,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="@string/email"
-            android:drawableEnd="@drawable/ic_mail_outline_blue_24dp"
-            android:background="@drawable/rounded_edittext"
+            android:background="@drawable/custom_edittext_rounded"
             android:padding="@dimen/activity_horizontal_margin"
             android:inputType="textEmailAddress"
             android:layout_marginVertical="@dimen/margin_small"/>
@@ -24,8 +23,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="@string/password"
-            android:drawableEnd="@drawable/ic_lock_outline_blue_24dp"
-            android:background="@drawable/rounded_edittext"
+            android:background="@drawable/custom_edittext_rounded"
             android:padding="@dimen/activity_horizontal_margin"
             android:layout_marginTop="@dimen/margin_small"
             android:layout_marginBottom="@dimen/activity_horizontal_margin"
@@ -36,7 +34,7 @@
             android:layout_height="wrap_content"
             android:text="@string/tab_sign_in"
             android:textColor="@color/white"
-            android:background="@drawable/custom_bluebutton"
+            android:background="@drawable/custom_button_blue"
             android:layout_gravity="right"/>
     </LinearLayout>
 

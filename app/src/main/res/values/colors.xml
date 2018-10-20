@@ -7,10 +7,10 @@
     -->
 
     <!--My Theme-->
-    <color name="colorPrimary">#2196F3</color>
-    <color name="colorPrimaryDark">#1976D2</color>
-    <color name="primary_light">#BBDEFB</color>
-    <color name="colorAccent">#795548</color>
+    <color name="colorPrimary">#0E4FAB</color>
+    <color name="colorPrimaryDark">#013087</color>
+    <color name="primary_light">#348EE2</color>
+    <color name="colorAccent">#348EE2</color>
     <color name="primary_text">#212121</color>
     <color name="secondary_text">#757575</color>
     <color name="icons">#FFFFFF</color>

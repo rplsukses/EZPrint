@@ -19,7 +19,10 @@
 
     <item>
         <shape>
-            <solid android:color="@color/colorPrimary"/>
+            <gradient
+                android:startColor="@color/primary_light"
+                android:endColor="@color/colorPrimary"
+                android:angle="180"/>
             <corners
                 android:radius="4dp" />
             <padding
