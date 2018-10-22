@@ -56,4 +56,14 @@
     <string name="menu_info">About Us</string>
     <string name="menu_notification">Notifications</string>
     <string name="menu_setting">Setting</string>
+
+    <string name="next">NEXT</string>
+    <string name="skip">SKIP</string>
+    <string name="start">GOT IT</string>
+    <string name="slide_1_title">Cloud base</string>
+    <string name="slide_1_desc">Upload dan cetak berkas kamu dengan cloud storage tanpa harus repot colok USB</string>
+    <string name="slide_2_title">Bebas antri</string>
+    <string name="slide_2_desc">Cetak berkas kamu dimana saja dan kapan saja dan tentunya tanpa harus Antri</string>
+    <string name="slide_3_title">Harga hemat</string>
+    <string name="slide_3_desc">Dapatkan harga cetak paling hemat mulai dari Rp 250 hanya di EZ Print</string>
 </resources>
