@@ -20,16 +20,17 @@
         android:layout_marginBottom="@dimen/dots_margin_bottom"
         android:gravity="center"
         android:orientation="horizontal"/>
+
     <Button
         android:id="@+id/activity_intro_slider_btnNext"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/next"
         android:textColor="@color/white"
-        android:background="@drawable/custom_button_blue"
         android:layout_margin="@dimen/activity_horizontal_margin"
         android:layout_alignParentRight="true"
-        android:layout_alignParentBottom="true"/>
+        android:layout_alignParentBottom="true"
+        style="@style/Widget.AppCompat.Button.Borderless"/>
     <Button
         android:id="@+id/activity_intro_slider_btnSkip"
         android:layout_width="wrap_content"
@@ -38,6 +39,6 @@
         android:textColor="@color/white"
         android:layout_margin="@dimen/activity_horizontal_margin"
         android:layout_alignParentBottom="true"
-        android:background="@drawable/custom_button_blue"/>
+        style="@style/Widget.AppCompat.Button.Borderless"/>
 
 </RelativeLayout>

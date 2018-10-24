@@ -7,13 +7,14 @@
 
     <!--My Dimen-->
     <dimen name="margin_small">5dp</dimen>
+    <dimen name="margin_med">10dp</dimen>
     <dimen name="text_big">22sp</dimen>
     <dimen name="text_med">18sp</dimen>
 
     <!-- For Slider-->
     <dimen name="dots_height">30dp</dimen>
-    <dimen name="dots_margin_bottom">20dp</dimen>
-    <dimen name="img_width_height">150dp</dimen>
+    <dimen name="dots_margin_bottom">36dp</dimen>
+    <dimen name="img_width_height">200dp</dimen>
     <dimen name="slide_title">30dp</dimen>
     <dimen name="slide_desc">16dp</dimen>
     <dimen name="desc_padding">40dp</dimen>
