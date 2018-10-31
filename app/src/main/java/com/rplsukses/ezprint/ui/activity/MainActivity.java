@@ -2,6 +2,8 @@ package com.rplsukses.ezprint.ui.activity;
 
 import android.support.design.widget.TabLayout;
 import android.support.v4.view.ViewPager;
+import android.support.v4.widget.DrawerLayout;
+import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.SearchView;
@@ -9,19 +11,16 @@ import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 
-import com.mikepenz.materialdrawer.Drawer;
 import com.rplsukses.ezprint.R;
 import com.rplsukses.ezprint.ui.adapter.TabAdapter;
 import com.rplsukses.ezprint.ui.fragment.KategoriFragment;
 import com.rplsukses.ezprint.ui.fragment.LocationFragment;
-import com.rplsukses.ezprint.ui.helper.DrawerMenuHelper;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
 public class MainActivity extends AppCompatActivity {
     private TabAdapter mAdapter;
-    private Drawer mDrawer;
 
     @BindView(R.id.activity_main_viewPager)
     ViewPager mViewPager;
@@ -29,6 +28,8 @@ public class MainActivity extends AppCompatActivity {
     TabLayout mTabLayout;
     @BindView(R.id.activity_main_toolbar)
     Toolbar mToolbar;
+    @BindView(R.id.drawerLayout)
+    DrawerLayout drawerLayout;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -41,7 +42,11 @@ public class MainActivity extends AppCompatActivity {
     private void init() {
         setSupportActionBar(mToolbar);
         mAdapter = new TabAdapter(getSupportFragmentManager());
-        mDrawer = DrawerMenuHelper.createDrawer(this, mToolbar);
+
+        // Set Drawerlayout switch indicator that the icon leftmost Toolbar
+        ActionBarDrawerToggle mActionBarDrawerToggle = new ActionBarDrawerToggle(this, drawerLayout, mToolbar, R.string.lbl_open, R.string.lbl_close);
+        mActionBarDrawerToggle.syncState();
+        drawerLayout.setDrawerListener(mActionBarDrawerToggle);
 
         mAdapter.addFragment(new LocationFragment(), getString(R.string.tab_location));
         mAdapter.addFragment(new KategoriFragment(), getString(R.string.tab_category));

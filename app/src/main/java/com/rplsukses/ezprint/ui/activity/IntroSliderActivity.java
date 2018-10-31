@@ -40,8 +40,6 @@ public class IntroSliderActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_intro_slider);
-        ButterKnife.bind(this);
 
         // Checking for first time launch - before calling setContentView()
         mPrefManager = new PreferenceManager(this);
@@ -49,6 +47,9 @@ public class IntroSliderActivity extends AppCompatActivity {
             launchHomeScreen();
             finish();
         }
+
+        setContentView(R.layout.activity_intro_slider);
+        ButterKnife.bind(this);
 
         // Making notification bar transparent
         if (Build.VERSION.SDK_INT >= 21) {

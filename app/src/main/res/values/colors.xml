@@ -11,13 +11,8 @@
     <color name="colorPrimaryDark">#013087</color>
     <color name="primary_light">#348EE2</color>
     <color name="colorAccent">#348EE2</color>
-    <color name="primary_text">#212121</color>
-    <color name="secondary_text">#757575</color>
-    <color name="icons">#FFFFFF</color>
-    <color name="divider">#BDBDBD</color>
 
     <!--My Color-->
-    <color name="black_overlay">#66000000</color>
     <color name="white">#FFFFFF</color>
 
     <!-- background slider-->
@@ -27,9 +22,6 @@
     <color name="bg_slider1_light">#67D690</color>
     <color name="bg_slider2_light">#ffa0c3</color>
     <color name="bg_slider3_light">#16B1FF</color>
-    <color name="bg_slider_screen1">#f4b241</color>
-    <color name="bg_slider_screen2">#16bc7d</color>
-    <color name="bg_slider_screen3">#203d8c</color>
     <!-- dots inactive colors -->
     <color name="dot_inactive_screen1">#F0F0F0</color>
     <color name="dot_inactive_screen2">#F0F0F0</color>
@@ -48,4 +40,8 @@
         <item>@color/dot_inactive_screen2</item>
         <item>@color/dot_inactive_screen3</item>
     </array>
+
+    <!--custom drawer-->
+    <color name="border">#cb0e4fab</color>
 </resources>
+

@@ -5,7 +5,6 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:background="@drawable/custom_main_background"
     tools:context=".ui.activity.LoginActivity">
 
     <android.support.design.widget.AppBarLayout

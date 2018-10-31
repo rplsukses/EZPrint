@@ -35,7 +35,7 @@ public class SigninFragment extends Fragment {
         return view;
     }
 
-    @OnClick(R.id.btn_signin) public void signin(View view){
+    @OnClick(R.id.signin_btnSignin) public void signin(View view){
         Intent intent = new Intent(getActivity(), MainActivity.class);
         startActivity(intent);
         getActivity().finish();

@@ -15,35 +15,50 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="@string/nama"
+            android:drawableEnd="@drawable/ic_person_blue"
             android:background="@drawable/custom_edittext_rounded"
-            android:padding="@dimen/activity_horizontal_margin"
+            android:paddingHorizontal="@dimen/activity_horizontal_margin"
+            android:paddingVertical="@dimen/activity_vertical_margin"
+            android:textSize="@dimen/text_small"
             android:inputType="text"
             android:layout_marginVertical="@dimen/margin_small"/>
         <EditText
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="@string/email"
+            android:drawableEnd="@drawable/ic_email_blue"
             android:background="@drawable/custom_edittext_rounded"
-            android:padding="@dimen/activity_horizontal_margin"
+            android:paddingHorizontal="@dimen/activity_horizontal_margin"
+            android:paddingVertical="@dimen/activity_vertical_margin"
+            android:textSize="@dimen/text_small"
             android:inputType="textEmailAddress"
             android:layout_marginVertical="@dimen/margin_small"/>
         <EditText
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="@string/password"
+            android:drawableEnd="@drawable/ic_lock_blue"
             android:background="@drawable/custom_edittext_rounded"
-            android:padding="@dimen/activity_horizontal_margin"
+            android:paddingHorizontal="@dimen/activity_horizontal_margin"
+            android:paddingVertical="@dimen/activity_vertical_margin"
+            android:textSize="@dimen/text_small"
             android:inputType="textPassword"
             android:layout_marginTop="@dimen/margin_small"
             android:layout_marginBottom="@dimen/activity_horizontal_margin"/>
-        <Button
-            android:id="@+id/btn_signup"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/tab_sign_up"
-            android:textColor="@color/white"
-            android:background="@drawable/custom_button_blue"
-            android:layout_gravity="right"/>
+        <RelativeLayout
+            android:layout_marginTop="@dimen/activity_vertical_margin"
+            android:layout_gravity="center"
+            android:layout_width="100dp"
+            android:layout_height="wrap_content">
+            <Button
+                android:id="@+id/btn_signup"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/tab_sign_up"
+                android:textColor="@color/white"
+                android:background="@drawable/custom_button_blue"
+                android:layout_gravity="right"/>
+        </RelativeLayout>
     </LinearLayout>
 
 

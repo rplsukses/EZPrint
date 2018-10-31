@@ -8,8 +8,6 @@
         <item name="colorAccent">@color/colorAccent</item>
     </style>
 
-    <style name="SplashScreenStyle" parent="Theme.AppCompat.NoActionBar"></style>
-
     <style name="MyToolbarTheme"
         parent="@style/ThemeOverlay.AppCompat.Dark">
         <item name="colorControlNormal">@color/white</item>

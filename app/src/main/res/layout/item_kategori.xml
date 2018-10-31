@@ -24,15 +24,17 @@
             <ImageView
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:src="@drawable/ic_ezprint"
+                android:src="@drawable/ic_document"
                 android:scaleType="centerCrop"/>
         </RelativeLayout>
         <TextView
             android:id="@+id/item_kategori_tvKategori"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:textSize="@dimen/activity_horizontal_margin"
+            android:fontFamily="@font/vt323"
+            android:textSize="@dimen/text_big"
             android:textAlignment="center"
+            android:textColor="@color/primary_light"
             android:text="@string/tab_category"
             android:singleLine="true"/>
     </LinearLayout>
