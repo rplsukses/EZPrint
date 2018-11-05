@@ -12,6 +12,7 @@
         android:padding="@dimen/activity_horizontal_margin">
 
         <EditText
+            android:id="@+id/signup_etNama"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="@string/nama"
@@ -23,6 +24,7 @@
             android:inputType="text"
             android:layout_marginVertical="@dimen/margin_small"/>
         <EditText
+            android:id="@+id/signup_etEmail"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="@string/email"
@@ -34,6 +36,7 @@
             android:inputType="textEmailAddress"
             android:layout_marginVertical="@dimen/margin_small"/>
         <EditText
+            android:id="@+id/signup_etPassword"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="@string/password"
@@ -45,13 +48,21 @@
             android:inputType="textPassword"
             android:layout_marginTop="@dimen/margin_small"
             android:layout_marginBottom="@dimen/activity_horizontal_margin"/>
+        <TextView
+            android:id="@+id/signup_tvError"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textSize="@dimen/text_small"
+            android:textColor="@color/text_error"
+            android:paddingHorizontal="@dimen/margin_med"
+            android:layout_marginBottom="@dimen/activity_horizontal_margin"/>
         <RelativeLayout
             android:layout_marginTop="@dimen/activity_vertical_margin"
             android:layout_gravity="center"
             android:layout_width="100dp"
             android:layout_height="wrap_content">
             <Button
-                android:id="@+id/btn_signup"
+                android:id="@+id/signup_btnSignup"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="@string/tab_sign_up"

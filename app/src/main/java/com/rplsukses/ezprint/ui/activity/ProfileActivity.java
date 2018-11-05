@@ -75,7 +75,7 @@ public class ProfileActivity extends AppCompatActivity {
                 menuItem.setChecked(true);
                 mDrawerLayout.closeDrawers();
 
-                Toast.makeText(getApplicationContext(), msgString, Toast.LENGTH_LONG).show();
+                //Toast.makeText(getApplicationContext(), msgString, Toast.LENGTH_LONG).show();
 
                 return true;
             }

@@ -9,11 +9,13 @@
     <!--My Theme-->
     <color name="colorPrimary">#0E4FAB</color>
     <color name="colorPrimaryDark">#013087</color>
-    <color name="primary_light">#348EE2</color>
+    <color name="primary_light">#46a2f7</color>
     <color name="colorAccent">#348EE2</color>
+    <color name="bg_secondary">#EAEEF1</color>
 
     <!--My Color-->
     <color name="white">#FFFFFF</color>
+    <color name="text_error">#ED1E79</color>
 
     <!-- background slider-->
     <color name="bg_slider1_dark">#00A99D</color>

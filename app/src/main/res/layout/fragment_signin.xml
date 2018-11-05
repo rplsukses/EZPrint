@@ -35,9 +35,18 @@
             android:paddingVertical="@dimen/activity_vertical_margin"
             android:textSize="@dimen/text_small"
             android:layout_marginTop="@dimen/margin_small"
-            android:layout_marginBottom="@dimen/activity_horizontal_margin"
+            android:layout_marginBottom="@dimen/margin_med"
             android:inputType="textPassword"
             android:layout_below="@+id/signin_etEmail"/>
+        <TextView
+            android:id="@+id/signin_tvError"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textSize="@dimen/text_small"
+            android:textColor="@color/text_error"
+            android:paddingHorizontal="@dimen/margin_med"
+            android:layout_below="@+id/signin_etPassword"
+            android:layout_marginBottom="@dimen/activity_horizontal_margin"/>
         <Button
             android:id="@+id/signin_btnSignin"
             android:layout_width="100dp"
@@ -46,7 +55,7 @@
             android:textColor="@color/white"
             android:background="@drawable/custom_button_blue"
             android:layout_marginTop="@dimen/activity_vertical_margin"
-            android:layout_below="@+id/signin_etPassword"
+            android:layout_below="@+id/signin_tvError"
             android:layout_centerHorizontal="true"/>
     </RelativeLayout>
 

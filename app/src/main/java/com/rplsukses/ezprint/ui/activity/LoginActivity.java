@@ -12,6 +12,7 @@ import com.rplsukses.ezprint.ui.fragment.SignupFragment;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import butterknife.OnClick;
 
 public class LoginActivity extends AppCompatActivity {
     private TabAdapter adapter;

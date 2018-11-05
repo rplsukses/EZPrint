@@ -29,35 +29,166 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
-                android:layout_weight="1"
+                android:layout_weight="0.8"
+                android:orientation="horizontal"
+                android:gravity="center_vertical"
                 android:paddingVertical="@dimen/margin_med"
                 android:paddingHorizontal="@dimen/activity_horizontal_margin"
-                android:background="@drawable/custom_main_background">
+                android:background="@drawable/custom_toolbar">
                 <de.hdodenhof.circleimageview.CircleImageView
                     android:layout_width="@dimen/img_med"
                     android:layout_height="@dimen/img_med"
-                    android:layout_marginTop="@dimen/activity_vertical_margin"
                     android:src="@drawable/user"
                     app:civ_border_width="4dp"
                     app:civ_border_color="@color/border"/>
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:gravity="center_vertical"
+                    android:paddingLeft="@dimen/activity_horizontal_margin">
+                    <TextView
+                        android:id="@+id/profile_tvNama"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="@string/app_name"
+                        android:textColor="@color/white"
+                        android:textSize="@dimen/text_big"
+                        android:layout_marginBottom="@dimen/margin_med"/>
+                    <Button
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="@string/edit_profile"
+                        android:textColor="@color/white"
+                        android:drawableLeft="@drawable/ic_settings_white"
+                        android:background="@drawable/custom_button_white"
+                        android:paddingHorizontal="@dimen/activity_horizontal_margin"
+                        android:layout_below="@+id/profile_tvNama"/>
+                </RelativeLayout>
             </LinearLayout>
-            <LinearLayout
+            <ScrollView
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
-                android:layout_weight="2"
-                android:orientation="vertical"
-                android:padding="@dimen/activity_horizontal_margin">
-                <EditText
+                android:layout_weight="2.2"
+                android:background="@color/bg_secondary">
+                <LinearLayout
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:hint="@string/nama"
-                    android:layout_marginVertical="@dimen/margin_med"/>
-                <EditText
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:hint="@string/email"
-                    android:layout_marginVertical="@dimen/margin_med"/>
-            </LinearLayout>
+                    android:layout_height="match_parent"
+                    android:orientation="vertical"
+                    android:padding="@dimen/activity_horizontal_margin">
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        android:layout_marginVertical="@dimen/margin_small">
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@string/email"
+                            android:textColor="@color/colorPrimary"
+                            android:layout_marginBottom="@dimen/margin_small"/>
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="admin@mail.com"
+                            android:textSize="@dimen/text_med"
+                            android:textColor="@color/colorPrimary"
+                            android:drawableLeft="@drawable/ic_email_blue"
+                            android:drawablePadding="@dimen/activity_horizontal_margin"
+                            android:layout_marginBottom="@dimen/margin_small"/>
+                        <RelativeLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="2dp"
+                            android:background="@color/md_divider_black"/>
+                    </LinearLayout>
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        android:layout_marginVertical="@dimen/margin_small">
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@string/telp"
+                            android:textColor="@color/colorPrimary"
+                            android:layout_marginBottom="@dimen/margin_small"/>
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="+62-822-4544-3941"
+                            android:textSize="@dimen/text_med"
+                            android:textColor="@color/colorPrimary"
+                            android:drawableLeft="@drawable/ic_smartphone_blue"
+                            android:drawablePadding="@dimen/activity_horizontal_margin"
+                            android:layout_marginBottom="@dimen/margin_small"/>
+                        <RelativeLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="2dp"
+                            android:background="@color/md_divider_black"/>
+                    </LinearLayout>
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        android:layout_marginVertical="@dimen/margin_small">
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@string/gender"
+                            android:textColor="@color/colorPrimary"
+                            android:layout_marginBottom="@dimen/margin_small"/>
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="Perempuan"
+                            android:textSize="@dimen/text_med"
+                            android:textColor="@color/colorPrimary"
+                            android:drawableLeft="@drawable/ic_person_blue"
+                            android:drawablePadding="@dimen/activity_horizontal_margin"
+                            android:layout_marginBottom="@dimen/margin_small"/>
+                        <RelativeLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="2dp"
+                            android:background="@color/md_divider_black"/>
+                    </LinearLayout>
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        android:layout_marginVertical="@dimen/margin_small">
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@string/ttl"
+                            android:textColor="@color/colorPrimary"
+                            android:layout_marginBottom="@dimen/margin_small"/>
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="1 Januari 1998"
+                            android:textSize="@dimen/text_med"
+                            android:textColor="@color/colorPrimary"
+                            android:drawableLeft="@drawable/ic_date_blue"
+                            android:drawablePadding="@dimen/activity_horizontal_margin"
+                            android:layout_marginBottom="@dimen/margin_small"/>
+                        <RelativeLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="2dp"
+                            android:background="@color/md_divider_black"/>
+                    </LinearLayout>
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:gravity="center"
+                        android:layout_marginVertical="@dimen/activity_vertical_margin">
+                        <Button
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:background="@drawable/custom_button_blue"
+                            android:textColor="@color/white"
+                            android:text="@string/logout"/>
+                    </RelativeLayout>
+                </LinearLayout>
+            </ScrollView>
         </LinearLayout>
     </LinearLayout>
     <android.support.design.widget.NavigationView

@@ -7,10 +7,12 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
 
 import com.rplsukses.ezprint.R;
 import com.rplsukses.ezprint.ui.activity.MainActivity;
 
+import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 
@@ -19,6 +21,11 @@ import butterknife.OnClick;
  * A simple {@link Fragment} subclass.
  */
 public class SignupFragment extends Fragment {
+
+    @BindView(R.id.signup_tvError)TextView tvError;
+    @BindView(R.id.signup_etPassword)TextView etPassword;
+    @BindView(R.id.signup_etNama)TextView etNama;
+    @BindView(R.id.signup_etEmail)TextView etEmail;
 
     public SignupFragment() {
         // Required empty public constructor
@@ -34,9 +41,37 @@ public class SignupFragment extends Fragment {
         return view;
     }
 
-    @OnClick(R.id.btn_signup) public void signup(View view){
-        Intent intent = new Intent(getActivity(), MainActivity.class);
-        startActivity(intent);
-        getActivity().finish();
+    @OnClick(R.id.signup_btnSignup) public void signup(View view){
+        if (validation()){
+            Intent intent = new Intent(getActivity(), MainActivity.class);
+            startActivity(intent);
+            getActivity().finish();
+        }
+    }
+
+    private boolean validation(){
+        String nama = etNama.getText().toString();
+        String email = etEmail.getText().toString();
+        String password = etPassword.getText().toString();
+
+        if (nama.isEmpty()){
+            etNama.requestFocus();
+            tvError.setText(R.string.error_required);
+            return false;
+        }else if (email.isEmpty()){
+            etEmail.requestFocus();
+            tvError.setText(R.string.error_required);
+            return false;
+        }else if (password.isEmpty()) {
+            etPassword.requestFocus();
+            tvError.setText(R.string.error_required);
+            return false;
+        }else if(password.length() < 8){
+            etPassword.requestFocus();
+            tvError.setText(R.string.error_password_length);
+            return false;
+        }
+
+        return true;
     }
 }

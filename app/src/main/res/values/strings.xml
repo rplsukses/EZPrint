@@ -56,4 +56,14 @@
 
     <string name="lbl_close">Close</string>
     <string name="lbl_open">Open</string>
+
+    <string name="error_required">This field is required!</string>
+    <string name="error_invalid">Email or Password is invalid!</string>
+    <string name="error_password_length">The password must contain at least eight characters!</string>
+    <string name="error_nama"></string>
+    <string name="logout">Log Out</string>
+    <string name="ttl">Tanggal Lahir</string>
+    <string name="telp">Nomor Telphone</string>
+    <string name="gender">Jenis Kelamin</string>
+    <string name="edit_profile">Edit Profile</string>
 </resources>
