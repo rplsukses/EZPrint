@@ -22,7 +22,10 @@
         <activity android:name=".ui.activity.ProfileActivity" />
         <activity android:name=".ui.activity.HelpActivity" />
         <activity android:name=".ui.activity.InfoActivity" />
-        <activity android:name=".ui.activity.OrderActivity"></activity>
+        <activity android:name=".ui.activity.OrderActivity" />
+        <activity android:name=".ui.activity.MitraActivity" />
+        <activity android:name=".ui.activity.KategoriMitraActivity" />
+        <activity android:name=".ui.activity.UploadActivity"></activity>
     </application>
 
 </manifest>

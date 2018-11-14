@@ -14,8 +14,11 @@ import android.widget.Toast;
 
 import com.rplsukses.ezprint.R;
 import com.rplsukses.ezprint.ui.adapter.TabAdapter;
+import com.rplsukses.ezprint.ui.fragment.HistoryFragment;
 import com.rplsukses.ezprint.ui.fragment.KategoriFragment;
 import com.rplsukses.ezprint.ui.fragment.LocationFragment;
+import com.rplsukses.ezprint.ui.fragment.OrderFragment;
+import com.rplsukses.ezprint.ui.helper.DrawerMenuHelper;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -37,6 +40,7 @@ public class OrderActivity extends AppCompatActivity {
         init();
     }
 
+    // This method to initialaze view
     private void init(){
         setSupportActionBar(mToolbar);
         mAdapter = new TabAdapter(getSupportFragmentManager());
@@ -46,52 +50,12 @@ public class OrderActivity extends AppCompatActivity {
         mActionBarDrawerToggle.syncState();
         mDrawerLayout.setDrawerListener(mActionBarDrawerToggle);
 
+
         // Set navigation item selected listener
-        mNavView.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
-            @Override
-            public boolean onNavigationItemSelected(MenuItem menuItem) {
-                String msgString = "";
+        DrawerMenuHelper.navListener(this, mNavView, mDrawerLayout);
 
-                switch (menuItem.getItemId()) {
-                    case R.id.navHome:
-                        msgString = (String) menuItem.getTitle();
-                        startActivity(new Intent(getApplicationContext(), MainActivity.class));
-                        finish();
-                        break;
-                    case R.id.navProfile:
-                        msgString = (String) menuItem.getTitle();
-                        startActivity(new Intent(getApplicationContext(), ProfileActivity.class));
-                        finish();
-                        break;
-                    case R.id.navOrder:
-                        msgString = (String) menuItem.getTitle();
-                        startActivity(new Intent(getApplicationContext(), OrderActivity.class));
-                        finish();
-                        break;
-                    case R.id.navHelp:
-                        msgString = (String) menuItem.getTitle();
-                        startActivity(new Intent(getApplicationContext(), HelpActivity.class));
-                        finish();
-                        break;
-                    case R.id.navAboutus:
-                        msgString = (String) menuItem.getTitle();
-                        startActivity(new Intent(getApplicationContext(), InfoActivity.class));
-                        finish();
-                        break;
-                }
-
-                // Menu item clicked on, and close Drawerlayout
-                menuItem.setChecked(true);
-                mDrawerLayout.closeDrawers();
-
-                //Toast.makeText(getApplicationContext(), msgString, Toast.LENGTH_LONG).show();
-
-                return true;
-            }
-        });
-
-        //mAdapter.addFragment(new LocationFragment(), getString(R.string.tab_location));
-        //mAdapter.addFragment(new KategoriFragment(), getString(R.string.tab_category));
+        mAdapter.addFragment(new OrderFragment(), getString(R.string.tab_inprogress));
+        mAdapter.addFragment(new HistoryFragment(), getString(R.string.tab_history));
         mViewPager.setAdapter(mAdapter);
         mTabLayout.setupWithViewPager(mViewPager);
     }

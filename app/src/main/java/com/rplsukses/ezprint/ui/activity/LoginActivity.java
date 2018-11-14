@@ -28,6 +28,7 @@ public class LoginActivity extends AppCompatActivity {
         init();
     }
 
+    // This method to initialaze view
     private void init(){
         adapter = new TabAdapter(getSupportFragmentManager());
         adapter.addFragment(new SigninFragment(), getString(R.string.tab_sign_in));

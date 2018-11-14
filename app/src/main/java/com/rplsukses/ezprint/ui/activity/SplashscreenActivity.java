@@ -14,6 +14,7 @@ public class SplashscreenActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_splashscreen);
 
+        // For automatic move to next activity
         new Handler().postDelayed(new Runnable() {
             @Override
             public void run() {

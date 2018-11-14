@@ -11,6 +11,8 @@ import android.widget.TextView;
 
 import com.rplsukses.ezprint.R;
 import com.rplsukses.ezprint.bl.model.Mitra;
+import com.rplsukses.ezprint.ui.activity.UploadActivity;
+import com.rplsukses.ezprint.ui.activity.MitraActivity;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -22,9 +24,15 @@ import butterknife.OnClick;
 public class MitraAdapter extends RecyclerView.Adapter<MitraAdapter.ViewHolder>{
     private List<Mitra> mList = new ArrayList<>();
     Context ctx;
+    int flag = 0;
 
     public MitraAdapter(Context ctx) {
         this.ctx = ctx;
+    }
+
+    public MitraAdapter(Context ctx, int flag) {
+        this.ctx = ctx;
+        this.flag = flag;
     }
 
     @NonNull
@@ -54,8 +62,14 @@ public class MitraAdapter extends RecyclerView.Adapter<MitraAdapter.ViewHolder>{
         }
 
         @OnClick(R.id.item_mitra_cardView) public void onClick(){
-            //Intent intent = new Intent(ctx, MitraActivity.class);
-            //ctx.startActivity(intent);
+            if (flag == 0) {
+                Intent intent = new Intent(ctx, MitraActivity.class);
+                intent.putExtra("mitra", tvTittle.getText().toString());
+                ctx.startActivity(intent);
+            }else {
+                Intent intent = new Intent(ctx, UploadActivity.class);
+                ctx.startActivity(intent);
+            }
         }
     }
 

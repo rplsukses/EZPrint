@@ -12,6 +12,7 @@ import android.widget.Toast;
 
 import com.rplsukses.ezprint.R;
 import com.rplsukses.ezprint.ui.adapter.TabAdapter;
+import com.rplsukses.ezprint.ui.helper.DrawerMenuHelper;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -29,6 +30,7 @@ public class ProfileActivity extends AppCompatActivity {
         init();
     }
 
+    // This method to initialaze view
     private void init(){
         setSupportActionBar(mToolbar);
 
@@ -38,47 +40,6 @@ public class ProfileActivity extends AppCompatActivity {
         mDrawerLayout.setDrawerListener(mActionBarDrawerToggle);
 
         // Set navigation item selected listener
-        mNavView.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
-            @Override
-            public boolean onNavigationItemSelected(MenuItem menuItem) {
-                String msgString = "";
-
-                switch (menuItem.getItemId()) {
-                    case R.id.navHome:
-                        msgString = (String) menuItem.getTitle();
-                        startActivity(new Intent(getApplicationContext(), MainActivity.class));
-                        finish();
-                        break;
-                    case R.id.navProfile:
-                        msgString = (String) menuItem.getTitle();
-                        startActivity(new Intent(getApplicationContext(), ProfileActivity.class));
-                        finish();
-                        break;
-                    case R.id.navOrder:
-                        msgString = (String) menuItem.getTitle();
-                        startActivity(new Intent(getApplicationContext(), OrderActivity.class));
-                        finish();
-                        break;
-                    case R.id.navHelp:
-                        msgString = (String) menuItem.getTitle();
-                        startActivity(new Intent(getApplicationContext(), HelpActivity.class));
-                        finish();
-                        break;
-                    case R.id.navAboutus:
-                        msgString = (String) menuItem.getTitle();
-                        startActivity(new Intent(getApplicationContext(), InfoActivity.class));
-                        finish();
-                        break;
-                }
-
-                // Menu item clicked on, and close Drawerlayout
-                menuItem.setChecked(true);
-                mDrawerLayout.closeDrawers();
-
-                //Toast.makeText(getApplicationContext(), msgString, Toast.LENGTH_LONG).show();
-
-                return true;
-            }
-        });
+        DrawerMenuHelper.navListener(this, mNavView, mDrawerLayout);
     }
 }

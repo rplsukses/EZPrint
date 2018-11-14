@@ -57,7 +57,7 @@
                     <Button
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text="@string/edit_profile"
+                        android:text="@string/setting_profile"
                         android:textColor="@color/white"
                         android:drawableLeft="@drawable/ic_settings_white"
                         android:background="@drawable/custom_button_white"

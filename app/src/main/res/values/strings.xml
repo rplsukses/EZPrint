@@ -4,6 +4,8 @@
     <string name="tab_sign_up">Sign Up</string>
     <string name="tab_location">Location</string>
     <string name="tab_category">Category</string>
+    <string name="tab_inprogress">In Progress</string>
+    <string name="tab_history">Riwayat</string>
 
     <string name="email">Email</string>
     <string name="password">Password</string>
@@ -65,5 +67,10 @@
     <string name="ttl">Tanggal Lahir</string>
     <string name="telp">Nomor Telphone</string>
     <string name="gender">Jenis Kelamin</string>
-    <string name="edit_profile">Edit Profile</string>
+    <string name="setting_profile">Atur Akun</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="batal">Batal</string>
+    <string name="pilih">Pilih</string>
 </resources>
