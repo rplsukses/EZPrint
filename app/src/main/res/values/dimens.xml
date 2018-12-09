@@ -6,6 +6,7 @@
     <!--My Dimen-->
     <dimen name="margin_small">5dp</dimen>
     <dimen name="margin_med">10dp</dimen>
+    <dimen name="margin_big">24dp</dimen>
     <dimen name="text_big">22sp</dimen>
     <dimen name="text_med">18sp</dimen>
     <dimen name="text_small">14sp</dimen>

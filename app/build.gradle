@@ -29,6 +29,9 @@ dependencies {
     implementation 'com.afollestad.material-dialogs:core:0.9.0.1'
     implementation 'de.hdodenhof:circleimageview:2.2.0'
     implementation 'com.tomergoldst.android:tooltips:1.0.10'
+    implementation 'com.squareup.retrofit2:retrofit:2.1.0'
+    implementation 'com.squareup.retrofit2:converter-gson:2.1.0'
+    implementation "com.squareup.okhttp3:logging-interceptor:3.3.0"
     testImplementation 'junit:junit:4.12'
     annotationProcessor 'com.jakewharton:butterknife-compiler:8.8.1'
     androidTestImplementation 'com.android.support.test:runner:1.0.2'

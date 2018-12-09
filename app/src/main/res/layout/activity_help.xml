@@ -21,10 +21,25 @@
             app:layout_collapseMode="pin"
             app:layout_scrollFlags="scroll|enterAlways"
             app:title="@string/app_name"/>
-        <ImageView
+        <RelativeLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:src="@drawable/ic_help"/>
+            android:layout_height="?attr/actionBarSize"
+            android:background="@drawable/custom_toolbar"
+            android:gravity="center"
+            android:paddingHorizontal="@dimen/margin_big">
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="@string/help"
+                android:textColorHint="@color/white"
+                android:textColor="@color/white"
+                android:paddingHorizontal="@dimen/activity_horizontal_margin"
+                android:paddingVertical="@dimen/margin_small"
+                android:background="@drawable/custom_edittext_white"/>
+        </RelativeLayout>
+        <android.support.v7.widget.RecyclerView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"/>
     </LinearLayout>
 
     <android.support.design.widget.NavigationView

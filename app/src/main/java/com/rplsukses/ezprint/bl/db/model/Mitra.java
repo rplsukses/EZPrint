@@ -1,4 +1,4 @@
-package com.rplsukses.ezprint.bl.model;
+package com.rplsukses.ezprint.bl.db.model;
 
 public class Mitra {
     private String nama;

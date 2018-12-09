@@ -12,9 +12,13 @@ import android.support.v7.widget.SearchView;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.rplsukses.ezprint.R;
+import com.rplsukses.ezprint.bl.db.model.User;
+import com.rplsukses.ezprint.bl.db.model.UserData;
+import com.rplsukses.ezprint.bl.util.PrefUtil;
 import com.rplsukses.ezprint.ui.adapter.TabAdapter;
 import com.rplsukses.ezprint.ui.fragment.KategoriFragment;
 import com.rplsukses.ezprint.ui.fragment.LocationFragment;
@@ -56,6 +60,8 @@ public class MainActivity extends AppCompatActivity {
 
         // Set navigation item selected listener
         DrawerMenuHelper.navListener(this, mNavView, mDrawerLayout);
+
+        //mTvUserName.setText("Nama");
 
         mAdapter.addFragment(new LocationFragment(), getString(R.string.tab_location));
         mAdapter.addFragment(new KategoriFragment(), getString(R.string.tab_category));

@@ -9,10 +9,9 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
-import com.afollestad.materialdialogs.DialogAction;
 import com.afollestad.materialdialogs.MaterialDialog;
 import com.rplsukses.ezprint.R;
-import com.rplsukses.ezprint.bl.model.Kategori;
+import com.rplsukses.ezprint.bl.db.model.Kategori;
 import com.rplsukses.ezprint.ui.activity.KategoriMitraActivity;
 import com.rplsukses.ezprint.ui.activity.UploadActivity;
 

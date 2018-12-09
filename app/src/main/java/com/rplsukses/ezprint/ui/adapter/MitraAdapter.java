@@ -10,7 +10,7 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import com.rplsukses.ezprint.R;
-import com.rplsukses.ezprint.bl.model.Mitra;
+import com.rplsukses.ezprint.bl.db.model.Mitra;
 import com.rplsukses.ezprint.ui.activity.UploadActivity;
 import com.rplsukses.ezprint.ui.activity.MitraActivity;
 

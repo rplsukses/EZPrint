@@ -47,7 +47,7 @@
                     android:gravity="center_vertical"
                     android:paddingLeft="@dimen/activity_horizontal_margin">
                     <TextView
-                        android:id="@+id/profile_tvNama"
+                        android:id="@+id/activity_profile_tvNama"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:text="@string/app_name"
@@ -55,6 +55,7 @@
                         android:textSize="@dimen/text_big"
                         android:layout_marginBottom="@dimen/margin_med"/>
                     <Button
+                        android:id="@+id/activity_profile_btnEdit"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:text="@string/setting_profile"
@@ -62,7 +63,7 @@
                         android:drawableLeft="@drawable/ic_settings_white"
                         android:background="@drawable/custom_button_white"
                         android:paddingHorizontal="@dimen/activity_horizontal_margin"
-                        android:layout_below="@+id/profile_tvNama"/>
+                        android:layout_below="@+id/activity_profile_tvNama"/>
                 </RelativeLayout>
             </LinearLayout>
             <ScrollView
@@ -87,6 +88,7 @@
                             android:textColor="@color/colorPrimary"
                             android:layout_marginBottom="@dimen/margin_small"/>
                         <TextView
+                            android:id="@+id/activity_profile_tvEmail"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:text="admin@mail.com"
@@ -112,6 +114,7 @@
                             android:textColor="@color/colorPrimary"
                             android:layout_marginBottom="@dimen/margin_small"/>
                         <TextView
+                            android:id="@+id/activity_profile_tvTelp"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:text="+62-822-4544-3941"
@@ -181,6 +184,7 @@
                         android:gravity="center"
                         android:layout_marginVertical="@dimen/activity_vertical_margin">
                         <Button
+                            android:id="@+id/activity_profile_btnLogout"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:background="@drawable/custom_button_blue"

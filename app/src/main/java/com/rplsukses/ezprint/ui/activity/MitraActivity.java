@@ -1,6 +1,5 @@
 package com.rplsukses.ezprint.ui.activity;
 
-import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.GridLayoutManager;
@@ -9,7 +8,7 @@ import android.support.v7.widget.Toolbar;
 import android.widget.TextView;
 
 import com.rplsukses.ezprint.R;
-import com.rplsukses.ezprint.bl.model.Kategori;
+import com.rplsukses.ezprint.bl.db.model.Kategori;
 import com.rplsukses.ezprint.ui.adapter.KategoriAdapter;
 
 import java.util.ArrayList;

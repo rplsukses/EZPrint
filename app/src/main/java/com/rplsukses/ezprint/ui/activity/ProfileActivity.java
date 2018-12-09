@@ -1,17 +1,16 @@
 package com.rplsukses.ezprint.ui.activity;
 
-import android.content.Intent;
 import android.support.design.widget.NavigationView;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
-import android.view.MenuItem;
-import android.widget.Toast;
+import android.widget.TextView;
 
 import com.rplsukses.ezprint.R;
-import com.rplsukses.ezprint.ui.adapter.TabAdapter;
+import com.rplsukses.ezprint.bl.db.model.User;
+import com.rplsukses.ezprint.bl.util.PrefUtil;
 import com.rplsukses.ezprint.ui.helper.DrawerMenuHelper;
 
 import butterknife.BindView;
@@ -21,12 +20,19 @@ public class ProfileActivity extends AppCompatActivity {
     @BindView(R.id.drawerLayout)DrawerLayout mDrawerLayout;
     @BindView(R.id.navigationView)NavigationView mNavView;
     @BindView(R.id.activity_profile_toolbar)Toolbar mToolbar;
+    @BindView(R.id.activity_profile_tvNama)TextView mTvNama;
+    @BindView(R.id.activity_profile_tvEmail)TextView mTvEmail;
+    @BindView(R.id.activity_profile_tvTelp)TextView mTvTelp;
+
+    User user;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_profile);
         ButterKnife.bind(this);
+
+        user = PrefUtil.getUser(this, PrefUtil.USER_SESSION);
         init();
     }
 
@@ -41,5 +47,9 @@ public class ProfileActivity extends AppCompatActivity {
 
         // Set navigation item selected listener
         DrawerMenuHelper.navListener(this, mNavView, mDrawerLayout);
+
+        mTvNama.setText(user.getNama());
+        mTvEmail.setText(user.getEmail());
+
     }
 }
