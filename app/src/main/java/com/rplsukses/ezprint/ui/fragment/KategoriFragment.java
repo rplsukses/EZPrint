@@ -10,7 +10,7 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.rplsukses.ezprint.R;
-import com.rplsukses.ezprint.bl.db.model.Kategori;
+import com.rplsukses.ezprint.bl.network.model.Kategori;
 import com.rplsukses.ezprint.ui.adapter.KategoriAdapter;
 
 import java.util.ArrayList;
@@ -56,7 +56,7 @@ public class KategoriFragment extends Fragment {
     public void initData(){
         String[] kategori = getResources().getStringArray(R.array.list_kategori);
         for (String s : kategori){
-            mList.add(new Kategori(s));
+            //mList.add(new Kategori(s));
         }
     }
 

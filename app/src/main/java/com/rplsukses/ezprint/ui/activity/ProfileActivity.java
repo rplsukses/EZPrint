@@ -9,7 +9,7 @@ import android.support.v7.widget.Toolbar;
 import android.widget.TextView;
 
 import com.rplsukses.ezprint.R;
-import com.rplsukses.ezprint.bl.db.model.User;
+import com.rplsukses.ezprint.bl.network.model.User;
 import com.rplsukses.ezprint.bl.util.PrefUtil;
 import com.rplsukses.ezprint.ui.helper.DrawerMenuHelper;
 
@@ -50,6 +50,7 @@ public class ProfileActivity extends AppCompatActivity {
 
         mTvNama.setText(user.getNama());
         mTvEmail.setText(user.getEmail());
+        mTvTelp.setText(user.getTelepon());
 
     }
 }

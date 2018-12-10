@@ -9,6 +9,7 @@ import android.widget.TextView;
 
 import com.rplsukses.ezprint.R;
 import com.rplsukses.ezprint.bl.db.model.Mitra;
+import com.rplsukses.ezprint.bl.network.model.MitraGet;
 import com.rplsukses.ezprint.ui.adapter.MitraAdapter;
 
 import java.util.ArrayList;
@@ -54,7 +55,7 @@ public class KategoriMitraActivity extends AppCompatActivity {
     public void initData(){
         String[] mitra = getResources().getStringArray(R.array.list_mitra);
         for (String s : mitra){
-            mList.add(new Mitra(s));
+            //mList.add(new MitraGet(s));
         }
     }
 

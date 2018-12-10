@@ -11,6 +11,7 @@ import android.widget.TextView;
 
 import com.rplsukses.ezprint.R;
 import com.rplsukses.ezprint.bl.db.model.Mitra;
+import com.rplsukses.ezprint.bl.network.model.MitraGet;
 import com.rplsukses.ezprint.ui.activity.UploadActivity;
 import com.rplsukses.ezprint.ui.activity.MitraActivity;
 
@@ -45,6 +46,7 @@ public class MitraAdapter extends RecyclerView.Adapter<MitraAdapter.ViewHolder>{
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
         holder.tvTittle.setText(mList.get(position).getNama());
+
     }
 
     @Override
@@ -55,6 +57,7 @@ public class MitraAdapter extends RecyclerView.Adapter<MitraAdapter.ViewHolder>{
     public class ViewHolder extends RecyclerView.ViewHolder{
         @BindView(R.id.item_mitra_tv)
         TextView tvTittle;
+
 
         public ViewHolder(View itemView) {
             super(itemView);

@@ -11,7 +11,7 @@ import android.widget.TextView;
 
 import com.afollestad.materialdialogs.MaterialDialog;
 import com.rplsukses.ezprint.R;
-import com.rplsukses.ezprint.bl.db.model.Kategori;
+import com.rplsukses.ezprint.bl.network.model.Kategori;
 import com.rplsukses.ezprint.ui.activity.KategoriMitraActivity;
 import com.rplsukses.ezprint.ui.activity.UploadActivity;
 
@@ -45,7 +45,7 @@ public class KategoriAdapter extends RecyclerView.Adapter<KategoriAdapter.ViewHo
 
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
-        holder.tvTitle.setText(mKategoriList.get(position).getKategori());
+        //holder.tvTitle.setText(mKategoriList.get(position).getKategori());
     }
 
     @Override

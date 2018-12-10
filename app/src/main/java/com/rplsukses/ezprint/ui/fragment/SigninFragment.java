@@ -4,6 +4,7 @@ package com.rplsukses.ezprint.ui.fragment;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -12,8 +13,9 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.rplsukses.ezprint.R;
-import com.rplsukses.ezprint.bl.db.model.User;
-import com.rplsukses.ezprint.bl.network.services.LoginServices;
+import com.rplsukses.ezprint.bl.network.api.Api;
+import com.rplsukses.ezprint.bl.network.config.RetrofitBuilder;
+import com.rplsukses.ezprint.bl.network.model.User;
 import com.rplsukses.ezprint.bl.util.PrefUtil;
 import com.rplsukses.ezprint.ui.activity.MainActivity;
 
@@ -34,9 +36,9 @@ public class SigninFragment extends Fragment {
     @BindView(R.id.signin_etPassword)EditText etPassword;
     @BindView(R.id.signin_tvError)TextView tvError;
 
-    private LoginServices loginServices;
     private String email;
     private String password;
+    private Api mApi;
 
     public SigninFragment() {
         // Required empty public constructor
@@ -57,7 +59,7 @@ public class SigninFragment extends Fragment {
         View view = inflater.inflate(R.layout.fragment_signin, container, false);
         ButterKnife.bind(this, view);
 
-        loginServices = new LoginServices(getActivity());
+        mApi = RetrofitBuilder.builder(getActivity()).create(Api.class);
 
         return view;
     }
@@ -88,10 +90,11 @@ public class SigninFragment extends Fragment {
     void loginAct(){
         email = etEmail.getText().toString();
         password = etPassword.getText().toString();
-        loginServices.doLogin(email, password, new Callback() {
+        mApi.login(email, password).enqueue(new Callback<User>() {
             @Override
-            public void onResponse(Call call, Response response) {
-                User user = (User) response.body();
+            public void onResponse(Call<User> call, Response<User> response) {
+                User user = response.body();
+                Log.i("USER_LOGIN", response.message());
 
                 if (user != null){
                     if (!user.getError()){
@@ -105,8 +108,9 @@ public class SigninFragment extends Fragment {
             }
 
             @Override
-            public void onFailure(Call call, Throwable t) {
-                Toast.makeText(getActivity(), "Error Login User!", Toast.LENGTH_SHORT).show();
+            public void onFailure(Call<User> call, Throwable t) {
+                Toast.makeText(getActivity(), t.getMessage(), Toast.LENGTH_SHORT).show();
+                Log.i("USER_LOGIN", t.getMessage());
             }
         });
     }

@@ -5,7 +5,7 @@ import android.content.SharedPreferences;
 import android.preference.PreferenceManager;
 
 import com.google.gson.Gson;
-import com.rplsukses.ezprint.bl.db.model.User;
+import com.rplsukses.ezprint.bl.network.model.User;
 
 public class PrefUtil {
     public static final String USER_SESSION = "user_session";

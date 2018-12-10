@@ -1,9 +1,12 @@
-package com.rplsukses.ezprint.bl.db.model;
+package com.rplsukses.ezprint.bl.network.model;
 
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
-public class UserData {
+import java.util.ArrayList;
+import java.util.List;
+
+public class User{
     @SerializedName("nama")
     @Expose
     private String nama;
@@ -12,7 +15,10 @@ public class UserData {
     private String email;
     @SerializedName("foto")
     @Expose
-    private String foto;
+    private Object foto;
+    @SerializedName("telepon")
+    @Expose
+    private String telepon;
     @SerializedName("error")
     @Expose
     private Boolean error;
@@ -36,12 +42,20 @@ public class UserData {
         this.email = email;
     }
 
-    public String getFoto() {
+    public Object getFoto() {
         return foto;
     }
 
-    public void setFoto(String foto) {
+    public void setFoto(Object foto) {
         this.foto = foto;
+    }
+
+    public String getTelepon() {
+        return telepon;
+    }
+
+    public void setTelepon(String telepon) {
+        this.telepon = telepon;
     }
 
     public Boolean getError() {
