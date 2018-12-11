@@ -6,10 +6,14 @@ import com.j256.ormlite.table.DatabaseTable;
 @DatabaseTable(tableName = Mitra.TBL_NAME)
 public class Mitra {
     public static final String TBL_NAME = "mitra";
+    public static final String ID_MITRA = "id_mitra";
+    public static final String NAMA = "mitra";
+    public static final String EMAIL = "email";
 
-    @DatabaseField(columnName =  "id_mitra", id = true) private Integer id_mitra;
-    @DatabaseField(columnName = "nama") private String nama;
-    @DatabaseField(columnName = "email") private String email;
+    @DatabaseField(columnName =  ID_MITRA, id = true) private Integer id_mitra;
+    @DatabaseField(columnName = NAMA) private String nama;
+    @DatabaseField(columnName = EMAIL) private String email;
+    @DatabaseField(columnName = "alamat") private String alamat;
     @DatabaseField(columnName = "telepon") private String telepon;
     @DatabaseField(columnName = "foto") private String foto;
     @DatabaseField(columnName = "jam_buka") private String jam_buka;
@@ -40,6 +44,14 @@ public class Mitra {
 
     public void setEmail(String email) {
         this.email = email;
+    }
+
+    public String getAlamat() {
+        return alamat;
+    }
+
+    public void setAlamat(String alamat) {
+        this.alamat = alamat;
     }
 
     public String getTelepon() {

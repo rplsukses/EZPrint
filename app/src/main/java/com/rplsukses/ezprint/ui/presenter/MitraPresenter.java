@@ -25,7 +25,18 @@ public class MitraPresenter {
             e.printStackTrace();
         }
 
-        mitraView.loadItem(mitraList);
+        mitraView.loadMitra(mitraList);
         mitraView.hideLoading();
+    }
+
+    public Mitra getByID(Integer id){
+        mitraView.showLoading();
+        Mitra mitra = null;
+        try {
+            mitra = MitraDao.getMitraDao().getMitraByID(id);
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return mitra;
     }
 }

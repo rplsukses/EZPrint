@@ -18,8 +18,10 @@ import android.view.MenuItem;
 import com.afollestad.materialdialogs.MaterialDialog;
 import com.rplsukses.ezprint.R;
 import com.rplsukses.ezprint.bl.db.dao.MitraDao;
+import com.rplsukses.ezprint.bl.db.dao.ProdukDao;
 import com.rplsukses.ezprint.bl.db.helper.Db;
 import com.rplsukses.ezprint.bl.db.model.Mitra;
+import com.rplsukses.ezprint.bl.db.model.Produk;
 import com.rplsukses.ezprint.bl.network.api.Api;
 import com.rplsukses.ezprint.bl.network.api.SyncWorker;
 import com.rplsukses.ezprint.bl.network.config.RetrofitBuilder;
@@ -126,6 +128,7 @@ public class MainActivity extends AppCompatActivity {
         protected Void doInBackground(Void... voids) {
             try {
                 SyncWorker.getSyncWorker().syncMitra(ctx, mApi.getMitra(), isFirstRun);
+                SyncWorker.getSyncWorker().syncProduk(ctx, mApi.getProduk(), isFirstRun);
                 if(isFirstRun) Thread.sleep(2000);
             } catch (InterruptedException e) {
                 e.printStackTrace();
@@ -143,10 +146,17 @@ public class MainActivity extends AppCompatActivity {
     private void initialCheck(){
         try {
             List<Mitra> mitrasCheck = MitraDao.getMitraDao().read();
-            isFirstRun = (mitrasCheck.isEmpty()? true : false);
+            List<Produk> produksCheck = ProdukDao.getProdukDao().read();
+            isFirstRun = (mitrasCheck.isEmpty()? true : produksCheck.isEmpty()? true : false);
         } catch (SQLException e) {
             e.printStackTrace();
         }
         Log.i("ISFIRSTRUN", String.valueOf(isFirstRun));
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        init();
     }
 }

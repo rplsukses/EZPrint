@@ -8,8 +8,16 @@ import android.support.v7.widget.Toolbar;
 import android.widget.TextView;
 
 import com.rplsukses.ezprint.R;
+import com.rplsukses.ezprint.bl.db.model.Mitra;
+import com.rplsukses.ezprint.bl.db.model.Produk;
 import com.rplsukses.ezprint.bl.network.model.Kategori;
 import com.rplsukses.ezprint.ui.adapter.KategoriAdapter;
+import com.rplsukses.ezprint.ui.adapter.MitraAdapter;
+import com.rplsukses.ezprint.ui.adapter.ProdukAdapter;
+import com.rplsukses.ezprint.ui.presenter.MitraPresenter;
+import com.rplsukses.ezprint.ui.presenter.ProdukPresenter;
+import com.rplsukses.ezprint.ui.view.MitraView;
+import com.rplsukses.ezprint.ui.view.ProdukView;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -17,12 +25,22 @@ import java.util.List;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
-public class MitraActivity extends AppCompatActivity {
-    private KategoriAdapter mAdapter;
+public class MitraActivity extends AppCompatActivity implements MitraView, ProdukView {
+    private KategoriAdapter kategoriAdapter;
+    private ProdukAdapter produkAdapter;
+    private MitraPresenter mitraPresenter;
+    private ProdukPresenter produkPresenter;
     private List<Kategori> mList = new ArrayList<>();
+    private List<Produk> produkList = new ArrayList<>();
+    private Mitra mitra;
+    private Integer id_mitra;
 
     @BindView(R.id.activity_mitra_tvMitra)
     TextView mTvMitra;
+    @BindView(R.id.activity_mitra_tvAlamat)
+    TextView mTvAlamat;
+    @BindView(R.id.activity_mitra_tvJam)
+    TextView mTvJam;
     @BindView(R.id.activity_mitra_rvContent)
     RecyclerView mRvContent;
     @BindView(R.id.activity_mitra_toolbar)
@@ -33,8 +51,11 @@ public class MitraActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_mitra);
         ButterKnife.bind(this);
+        id_mitra = Integer.valueOf(getIntent().getStringExtra("id_mitra"));
+        mitraPresenter = new MitraPresenter(this);
+        produkPresenter = new ProdukPresenter(this);
+        mitra = mitraPresenter.getByID(id_mitra);
         init();
-        initData();
     }
 
     public void init(){
@@ -42,24 +63,44 @@ public class MitraActivity extends AppCompatActivity {
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setDisplayShowHomeEnabled(true);
 
-        mAdapter = new KategoriAdapter(this, 1);
-        mAdapter.generate(mList);
+        produkAdapter = new ProdukAdapter(this);
         mRvContent.setLayoutManager(new GridLayoutManager(this, 2));
-        mRvContent.setAdapter(mAdapter);
 
-        mTvMitra.setText(getIntent().getStringExtra("mitra"));
+        mTvMitra.setText(mitra.getNama());
+        mTvAlamat.setText(mitra.getAlamat());
+        mTvJam.setText(mitra.getJam_buka() + " - "  + mitra.getJam_tutup());
     }
 
-    public void initData(){
-        String[] kategori = getResources().getStringArray(R.array.list_kategori);
-        for (String s : kategori){
-            //mList.add(new Kategori(s));
-        }
+    @Override
+    protected void onResume() {
+        super.onResume();
+        produkPresenter.loadProdukByMitra(id_mitra);
     }
 
     @Override
     public boolean onSupportNavigateUp() {
         onBackPressed();
         return true;
+    }
+
+    @Override
+    public void showLoading() {
+
+    }
+
+    @Override
+    public void hideLoading() {
+
+    }
+
+    @Override
+    public void loadProduk(List<Produk> produkList) {
+        produkAdapter.generate(produkList);
+        mRvContent.setAdapter(produkAdapter);
+    }
+
+    @Override
+    public void loadMitra(List<Mitra> mitraList) {
+
     }
 }

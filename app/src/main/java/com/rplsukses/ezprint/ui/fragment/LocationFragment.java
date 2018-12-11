@@ -67,7 +67,7 @@ public class LocationFragment extends Fragment implements MitraView {
     }
 
     @Override
-    public void loadItem(List<Mitra> mitraList) {
+    public void loadMitra(List<Mitra> mitraList) {
         mAdapter.generate(mitraList);
         mRvContent.setAdapter(mAdapter);
     }

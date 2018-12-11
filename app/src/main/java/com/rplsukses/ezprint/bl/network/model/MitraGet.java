@@ -28,6 +28,9 @@ public class MitraGet {
         @SerializedName("email")
         @Expose
         private String email;
+        @SerializedName("alamat")
+        @Expose
+        private String alamat;
         @SerializedName("telepon")
         @Expose
         private String telepon;
@@ -63,6 +66,14 @@ public class MitraGet {
 
         public void setEmail(String email) {
             this.email = email;
+        }
+
+        public String getAlamat() {
+            return alamat;
+        }
+
+        public void setAlamat(String alamat) {
+            this.alamat = alamat;
         }
 
         public String getTelepon() {

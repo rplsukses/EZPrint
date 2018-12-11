@@ -7,11 +7,11 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.rplsukses.ezprint.R;
 import com.rplsukses.ezprint.bl.db.model.Mitra;
-import com.rplsukses.ezprint.bl.network.model.MitraGet;
 import com.rplsukses.ezprint.ui.activity.UploadActivity;
 import com.rplsukses.ezprint.ui.activity.MitraActivity;
 
@@ -46,7 +46,9 @@ public class MitraAdapter extends RecyclerView.Adapter<MitraAdapter.ViewHolder>{
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
         holder.tvTittle.setText(mList.get(position).getNama());
-
+        holder.tvAlamat.setText(mList.get(position).getAlamat());
+        holder.tvJam.setText(mList.get(position).getJam_buka() + " - " + mList.get(position).getJam_tutup());
+        holder.id_mitra = mList.get(position).getId_mitra().toString();
     }
 
     @Override
@@ -55,8 +57,15 @@ public class MitraAdapter extends RecyclerView.Adapter<MitraAdapter.ViewHolder>{
     }
 
     public class ViewHolder extends RecyclerView.ViewHolder{
-        @BindView(R.id.item_mitra_tv)
+        @BindView(R.id.item_mitra_tvNama)
         TextView tvTittle;
+        @BindView(R.id.item_mitra_ivIcon)
+        ImageView ivIcon;
+        @BindView(R.id.item_mitra_tvAlamat)
+        TextView tvAlamat;
+        @BindView(R.id.item_mitra_tvJam)
+        TextView tvJam;
+        private String id_mitra;
 
 
         public ViewHolder(View itemView) {
@@ -67,7 +76,7 @@ public class MitraAdapter extends RecyclerView.Adapter<MitraAdapter.ViewHolder>{
         @OnClick(R.id.item_mitra_cardView) public void onClick(){
             if (flag == 0) {
                 Intent intent = new Intent(ctx, MitraActivity.class);
-                intent.putExtra("mitra", tvTittle.getText().toString());
+                intent.putExtra("id_mitra", id_mitra);
                 ctx.startActivity(intent);
             }else {
                 Intent intent = new Intent(ctx, UploadActivity.class);

@@ -1,6 +1,7 @@
 package com.rplsukses.ezprint.bl.network.api;
 
 import com.rplsukses.ezprint.bl.network.model.MitraGet;
+import com.rplsukses.ezprint.bl.network.model.ProdukGet;
 import com.rplsukses.ezprint.bl.network.model.User;
 import com.rplsukses.ezprint.bl.network.config.Config;
 
@@ -28,4 +29,8 @@ public interface Api {
 
     @GET(Config.API_MITRA)
     Call<MitraGet> getMitra();
+
+    @GET(Config.API_PRODUK)
+    Call<ProdukGet> getProduk();
+
 }

@@ -7,5 +7,5 @@ import java.util.List;
 public interface MitraView {
     void showLoading();
     void hideLoading();
-    void loadItem(List<Mitra> mitraList);
+    void loadMitra(List<Mitra> mitraList);
 }
