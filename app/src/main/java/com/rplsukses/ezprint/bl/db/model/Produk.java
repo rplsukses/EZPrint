@@ -11,15 +11,22 @@ public class Produk {
     public static final String ID_PRODUK = "id_produk";
     public static final String ID_MITRA = "id_mitra";
     public static final String ID_KATEGORI = "id_kategori";
+    public static final String WARNA = "warna";
+    public static final String BAHAN = "bahan";
+    public static final String UKURAN = "ukuran";
+    public static final String KATEGORI = "kategori";
+    public static final String ICON = "icon";
+    public static final String HARGA = "harga";
 
     @DatabaseField(columnName = ID_PRODUK, id = true) private Integer id_produk;
     @DatabaseField(columnName = ID_KATEGORI) private Integer id_kategori;
     @DatabaseField(columnName = ID_MITRA) private Integer id_mitra;
-    @DatabaseField(columnName = "bahan") private String bahan;
-    @DatabaseField(columnName = "ukuran") private String ukuran;
-    @DatabaseField(columnName = "harga") private BigDecimal harga;
-    @DatabaseField(columnName = "kategori") private String kategori;
-    @DatabaseField(columnName = "icon") private String icon;
+    @DatabaseField(columnName = BAHAN) private String bahan;
+    @DatabaseField(columnName = WARNA) private String warna;
+    @DatabaseField(columnName = UKURAN) private String ukuran;
+    @DatabaseField(columnName = HARGA) private BigDecimal harga;
+    @DatabaseField(columnName = KATEGORI) private String kategori;
+    @DatabaseField(columnName = ICON) private String icon;
 
     public Produk() {
     }
@@ -86,5 +93,13 @@ public class Produk {
 
     public void setIcon(String icon) {
         this.icon = icon;
+    }
+
+    public String getWarna() {
+        return warna;
+    }
+
+    public void setWarna(String warna) {
+        this.warna = warna;
     }
 }

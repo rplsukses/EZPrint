@@ -26,4 +26,15 @@ public class ProdukPresenter {
         produkView.loadProduk(produkList);
         produkView.hideLoading();
     }
+
+    public Produk getProdukByID(Integer id_produk){
+        produkView.showLoading();
+        Produk produk = new Produk();
+        try {
+            produk = ProdukDao.getProdukDao().readByID(id_produk);
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return produk;
+    }
 }

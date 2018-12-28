@@ -77,6 +77,7 @@ public class SyncWorker {
                         produk.setId_produk(data.getIdProduk());
                         produk.setId_kategori(data.getIdKategori());
                         produk.setId_mitra(data.getIdMitra());
+                        produk.setWarna(data.getWarna());
                         produk.setKategori(data.getKategori());
                         produk.setBahan(data.getBahan());
                         produk.setUkuran(data.getUkuran());

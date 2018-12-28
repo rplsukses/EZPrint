@@ -21,4 +21,8 @@ public class ProdukDao extends BaseDaoCrud<Produk, Integer> {
         qb.where().eq(Produk.ID_MITRA, id_mitra);
         return getDao().query(qb.prepare());
     }
+
+    public Produk readByID(Integer id_produk) throws SQLException{
+        return getDao().queryForId(id_produk);
+    }
 }

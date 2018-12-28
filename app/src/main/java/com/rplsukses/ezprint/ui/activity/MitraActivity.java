@@ -51,24 +51,28 @@ public class MitraActivity extends AppCompatActivity implements MitraView, Produ
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_mitra);
         ButterKnife.bind(this);
-        id_mitra = Integer.valueOf(getIntent().getStringExtra("id_mitra"));
-        mitraPresenter = new MitraPresenter(this);
-        produkPresenter = new ProdukPresenter(this);
-        mitra = mitraPresenter.getByID(id_mitra);
+        initPresenter();
         init();
     }
 
-    public void init(){
+    private void init(){
         setSupportActionBar(mToolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setDisplayShowHomeEnabled(true);
 
+        id_mitra = Integer.valueOf(getIntent().getStringExtra("id_mitra"));
+        mitra = mitraPresenter.getByID(id_mitra);
         produkAdapter = new ProdukAdapter(this);
         mRvContent.setLayoutManager(new GridLayoutManager(this, 2));
 
         mTvMitra.setText(mitra.getNama());
         mTvAlamat.setText(mitra.getAlamat());
         mTvJam.setText(mitra.getJam_buka() + " - "  + mitra.getJam_tutup());
+    }
+
+    private void initPresenter(){
+        mitraPresenter = new MitraPresenter(this);
+        produkPresenter = new ProdukPresenter(this);
     }
 
     @Override

@@ -12,6 +12,7 @@ import android.view.ViewGroup;
 import com.rplsukses.ezprint.R;
 import com.rplsukses.ezprint.bl.network.model.Kategori;
 import com.rplsukses.ezprint.ui.adapter.KategoriAdapter;
+import com.rplsukses.ezprint.ui.view.KategoriView;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -23,7 +24,7 @@ import butterknife.ButterKnife;
 /**
  * A simple {@link Fragment} subclass.
  */
-public class KategoriFragment extends Fragment {
+public class KategoriFragment extends Fragment implements KategoriView {
     private KategoriAdapter mAdapter;
     private List<Kategori> mList = new ArrayList<>();
 
@@ -60,4 +61,18 @@ public class KategoriFragment extends Fragment {
         }
     }
 
+    @Override
+    public void showLoading() {
+
+    }
+
+    @Override
+    public void hideLoading() {
+
+    }
+
+    @Override
+    public void loadItem(List<Kategori> kategoriList) {
+
+    }
 }
