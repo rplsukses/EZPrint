@@ -1,15 +1,21 @@
 package com.rplsukses.ezprint.bl.network.api;
 
+import com.rplsukses.ezprint.bl.network.model.BaseRespons;
 import com.rplsukses.ezprint.bl.network.model.MitraGet;
 import com.rplsukses.ezprint.bl.network.model.ProdukGet;
 import com.rplsukses.ezprint.bl.network.model.User;
 import com.rplsukses.ezprint.bl.network.config.Config;
 
+import java.io.File;
+
+import okhttp3.MultipartBody;
 import retrofit2.Call;
 import retrofit2.http.Field;
 import retrofit2.http.FormUrlEncoded;
 import retrofit2.http.GET;
+import retrofit2.http.Multipart;
 import retrofit2.http.POST;
+import retrofit2.http.Part;
 
 public interface Api {
     @FormUrlEncoded
@@ -33,4 +39,12 @@ public interface Api {
     @GET(Config.API_PRODUK)
     Call<ProdukGet> getProduk();
 
+    @Multipart
+    @POST(Config.API_UPLOAD_TRANS)
+    Call<BaseRespons> uploadTransaksi(
+            @Part("user") Integer user,
+            @Part("mitra") Integer mitra,
+            @Part("produk") Integer produk,
+            @Part("file\" ; filename=\"myfile.jpg\" ") File file
+    );
 }
