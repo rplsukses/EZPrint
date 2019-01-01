@@ -1,11 +1,11 @@
 package com.rplsukses.ezprint.ui.activity;
 
-import android.support.design.widget.NavigationView;
-import android.support.v4.widget.DrawerLayout;
-import android.support.v7.app.ActionBarDrawerToggle;
-import android.support.v7.app.AppCompatActivity;
+import com.google.android.material.navigation.NavigationView;
+import androidx.drawerlayout.widget.DrawerLayout;
+import androidx.appcompat.app.ActionBarDrawerToggle;
+import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
-import android.support.v7.widget.Toolbar;
+import androidx.appcompat.widget.Toolbar;
 import android.widget.TextView;
 
 import com.rplsukses.ezprint.R;
@@ -48,7 +48,7 @@ public class ProfileActivity extends AppCompatActivity {
         // Set navigation item selected listener
         DrawerMenuHelper.navListener(this, mNavView, mDrawerLayout);
 
-        mTvNama.setText(user.getNama());
+        mTvNama.setText(user.getNama() + " | id : " + user.getId_user());
         mTvEmail.setText(user.getEmail());
         mTvTelp.setText(user.getTelepon());
 

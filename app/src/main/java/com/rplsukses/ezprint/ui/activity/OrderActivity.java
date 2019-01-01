@@ -1,22 +1,17 @@
 package com.rplsukses.ezprint.ui.activity;
 
-import android.content.Intent;
-import android.support.design.widget.NavigationView;
-import android.support.design.widget.TabLayout;
-import android.support.v4.view.ViewPager;
-import android.support.v4.widget.DrawerLayout;
-import android.support.v7.app.ActionBarDrawerToggle;
-import android.support.v7.app.AppCompatActivity;
+import com.google.android.material.navigation.NavigationView;
+import com.google.android.material.tabs.TabLayout;
+import androidx.viewpager.widget.ViewPager;
+import androidx.drawerlayout.widget.DrawerLayout;
+import androidx.appcompat.app.ActionBarDrawerToggle;
+import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
-import android.support.v7.widget.Toolbar;
-import android.view.MenuItem;
-import android.widget.Toast;
+import androidx.appcompat.widget.Toolbar;
 
 import com.rplsukses.ezprint.R;
 import com.rplsukses.ezprint.ui.adapter.TabAdapter;
 import com.rplsukses.ezprint.ui.fragment.HistoryFragment;
-import com.rplsukses.ezprint.ui.fragment.KategoriFragment;
-import com.rplsukses.ezprint.ui.fragment.LocationFragment;
 import com.rplsukses.ezprint.ui.fragment.OrderFragment;
 import com.rplsukses.ezprint.ui.helper.DrawerMenuHelper;
 

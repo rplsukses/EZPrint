@@ -2,11 +2,15 @@ package com.rplsukses.ezprint.bl.network.model;
 
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
+import com.j256.ormlite.stmt.query.In;
 
 import java.util.ArrayList;
 import java.util.List;
 
 public class User{
+    @SerializedName("id_user")
+    @Expose
+    private Integer id_user;
     @SerializedName("nama")
     @Expose
     private String nama;
@@ -25,6 +29,14 @@ public class User{
     @SerializedName("message")
     @Expose
     private String message;
+
+    public Integer getId_user() {
+        return id_user;
+    }
+
+    public void setId_user(Integer id_user) {
+        this.id_user = id_user;
+    }
 
     public String getNama() {
         return nama;

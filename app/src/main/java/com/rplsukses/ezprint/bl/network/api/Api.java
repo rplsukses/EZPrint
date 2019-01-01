@@ -9,6 +9,7 @@ import com.rplsukses.ezprint.bl.network.config.Config;
 import java.io.File;
 
 import okhttp3.MultipartBody;
+import okhttp3.RequestBody;
 import retrofit2.Call;
 import retrofit2.http.Field;
 import retrofit2.http.FormUrlEncoded;
@@ -41,10 +42,11 @@ public interface Api {
 
     @Multipart
     @POST(Config.API_UPLOAD_TRANS)
-    Call<BaseRespons> uploadTransaksi(
+    Call<BaseRespons> uploadFile(
             @Part("user") Integer user,
             @Part("mitra") Integer mitra,
             @Part("produk") Integer produk,
-            @Part("file\" ; filename=\"myfile.jpg\" ") File file
+            @Part("file") RequestBody name,
+            @Part MultipartBody.Part file
     );
 }

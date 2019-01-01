@@ -2,9 +2,9 @@ package com.rplsukses.ezprint.ui.helper;
 
 import android.app.Activity;
 import android.content.Intent;
-import android.support.annotation.NonNull;
-import android.support.design.widget.NavigationView;
-import android.support.v4.widget.DrawerLayout;
+import androidx.annotation.NonNull;
+import com.google.android.material.navigation.NavigationView;
+import androidx.drawerlayout.widget.DrawerLayout;
 import android.view.MenuItem;
 
 import com.rplsukses.ezprint.R;

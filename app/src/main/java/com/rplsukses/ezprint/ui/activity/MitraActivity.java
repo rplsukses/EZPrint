@@ -1,10 +1,10 @@
 package com.rplsukses.ezprint.ui.activity;
 
-import android.support.v7.app.AppCompatActivity;
+import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
-import android.support.v7.widget.GridLayoutManager;
-import android.support.v7.widget.RecyclerView;
-import android.support.v7.widget.Toolbar;
+import androidx.recyclerview.widget.GridLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
+import androidx.appcompat.widget.Toolbar;
 import android.widget.TextView;
 
 import com.rplsukses.ezprint.R;
@@ -12,7 +12,6 @@ import com.rplsukses.ezprint.bl.db.model.Mitra;
 import com.rplsukses.ezprint.bl.db.model.Produk;
 import com.rplsukses.ezprint.bl.network.model.Kategori;
 import com.rplsukses.ezprint.ui.adapter.KategoriAdapter;
-import com.rplsukses.ezprint.ui.adapter.MitraAdapter;
 import com.rplsukses.ezprint.ui.adapter.ProdukAdapter;
 import com.rplsukses.ezprint.ui.presenter.MitraPresenter;
 import com.rplsukses.ezprint.ui.presenter.ProdukPresenter;

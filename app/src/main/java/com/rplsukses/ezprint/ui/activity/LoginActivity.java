@@ -1,9 +1,9 @@
 package com.rplsukses.ezprint.ui.activity;
 
 import android.os.Bundle;
-import android.support.design.widget.TabLayout;
-import android.support.v4.view.ViewPager;
-import android.support.v7.app.AppCompatActivity;
+import com.google.android.material.tabs.TabLayout;
+import androidx.viewpager.widget.ViewPager;
+import androidx.appcompat.app.AppCompatActivity;
 
 import com.rplsukses.ezprint.R;
 import com.rplsukses.ezprint.ui.adapter.TabAdapter;
@@ -12,7 +12,6 @@ import com.rplsukses.ezprint.ui.fragment.SignupFragment;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
-import butterknife.OnClick;
 
 public class LoginActivity extends AppCompatActivity {
     private TabAdapter adapter;

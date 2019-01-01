@@ -1,13 +1,11 @@
 package com.rplsukses.ezprint.ui.activity;
 
-import android.content.CursorLoader;
 import android.content.Intent;
-import android.database.Cursor;
 import android.net.Uri;
 import android.provider.MediaStore;
-import android.support.v7.app.AppCompatActivity;
+import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
-import android.support.v7.widget.Toolbar;
+import androidx.appcompat.widget.Toolbar;
 import android.util.Log;
 import android.widget.EditText;
 import android.widget.TextView;
@@ -23,6 +21,7 @@ import com.rplsukses.ezprint.bl.network.model.User;
 import com.rplsukses.ezprint.bl.util.PrefUtil;
 import com.rplsukses.ezprint.ui.presenter.MitraPresenter;
 import com.rplsukses.ezprint.ui.presenter.ProdukPresenter;
+import com.rplsukses.ezprint.ui.util.RealPathUtil;
 import com.rplsukses.ezprint.ui.view.MitraView;
 import com.rplsukses.ezprint.ui.view.ProdukView;
 
@@ -32,11 +31,15 @@ import java.util.List;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
+import okhttp3.MediaType;
+import okhttp3.MultipartBody;
+import okhttp3.RequestBody;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
 public class UploadActivity extends AppCompatActivity implements ProdukView, MitraView {
+    public static final int PICK_FILE = 100;
     private ProdukPresenter produkPresenter;
     private MitraPresenter mitraPresenter;
     private Mitra mitraActive;
@@ -44,7 +47,7 @@ public class UploadActivity extends AppCompatActivity implements ProdukView, Mit
     private int idProduk, idMitra;
     private Api mApi;
     private User user;
-    private Uri selectedImage;
+    private Uri selectedFile;
 
     @BindView(R.id.activity_upload_toolbar)Toolbar mToolbar;
     @BindView(R.id.activity_upload_tvTitle) TextView mTvTitle;
@@ -93,28 +96,21 @@ public class UploadActivity extends AppCompatActivity implements ProdukView, Mit
         return true;
     }
 
-    private String getRealPathFromURI(Uri contentUri) {
-        String[] proj = {MediaStore.Images.Media.DATA};
-        CursorLoader loader = new CursorLoader(this, contentUri, proj, null, null, null);
-        Cursor cursor = loader.loadInBackground();
-        int column_index = cursor.getColumnIndexOrThrow(MediaStore.Images.Media.DATA);
-        cursor.moveToFirst();
-        String result = cursor.getString(column_index);
-        cursor.close();
-        return result;
-    }
-
     private void uploadFile(Uri fileUri){
-        File file = new File(getRealPathFromURI(fileUri));
+        showLoading();
+        File file = new File(RealPathUtil.getRealPath(getApplication(), fileUri));
+        RequestBody filename = RequestBody.create(MediaType.parse("text/plain"), file.getName());
+        RequestBody requestFile = RequestBody.create(MediaType.parse(getContentResolver().getType(fileUri)), file);
+        MultipartBody.Part reqFile = MultipartBody.Part.createFormData("file", file.getName(), requestFile);
 
-        mApi.uploadTransaksi(2, idMitra, idProduk, file).enqueue(new Callback<BaseRespons>() {
+        mApi.uploadFile(user.getId_user(), idMitra, idProduk, filename, reqFile).enqueue(new Callback<BaseRespons>() {
             @Override
             public void onResponse(Call<BaseRespons> call, Response<BaseRespons> response) {
                 BaseRespons respons = response.body();
                 Log.i("UPLOAD_FILE", response.message());
 
-                if (respons != null){
-                    if (!respons.getError()){
+                if (respons != null) {
+                    if (!respons.getError()) {
                         Toast.makeText(getApplicationContext(), respons.getMessage(), Toast.LENGTH_SHORT).show();
                         Intent intent = new Intent(getApplicationContext(), OrderActivity.class);
                         startActivity(intent);
@@ -138,26 +134,41 @@ public class UploadActivity extends AppCompatActivity implements ProdukView, Mit
     }
 
     @OnClick(R.id.activity_upload_btnNext) public void checkout(){
-        if (validate()){
-            uploadFile(selectedImage);
+        if (validate()) {
+            uploadFile(selectedFile);
         }
     }
 
     @OnClick(R.id.activity_upload_btnBrowse) public void selectFile(){
-        //Intent i = new Intent(Intent.ACTION_GET_CONTENT);
-        //i.setType("file/*");
-        // temporary use image
-        Intent i = new Intent(Intent.ACTION_PICK, MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
-        startActivityForResult(i, 100);
+        // check if kategori == dokumen
+        if(produkActive.getId_kategori() == 1) {
+            String[] mimeTypes =
+                    {"application/msword","application/vnd.openxmlformats-officedocument.wordprocessingml.document", // .doc & .docx
+                            "application/vnd.ms-powerpoint","application/vnd.openxmlformats-officedocument.presentationml.presentation", // .ppt & .pptx
+                            "application/vnd.ms-excel","application/vnd.openxmlformats-officedocument.spreadsheetml.sheet", // .xls & .xlsx
+                            "text/plain",
+                            "application/pdf"};
+
+            Intent i = new Intent(Intent.ACTION_GET_CONTENT);
+            for (String type: mimeTypes) {
+                i.setType(type);
+            }
+            if (mimeTypes.length > 0) {
+                i.putExtra(Intent.EXTRA_MIME_TYPES, mimeTypes);
+            }
+            startActivityForResult(i, PICK_FILE);
+        }else {
+            Intent i = new Intent(Intent.ACTION_PICK, MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
+            startActivityForResult(i, PICK_FILE);
+        }
     }
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
-        if (requestCode == 100 && resultCode == RESULT_OK && data != null) {
-            //the file URI
-            selectedImage = data.getData();
-            mEtFile.setText(getRealPathFromURI(selectedImage));
+        if (requestCode == PICK_FILE && resultCode == RESULT_OK && data != null) {
+            selectedFile = data.getData();
+            mEtFile.setText(new File(RealPathUtil.getRealPath(getApplicationContext(), selectedFile)).getName());
         }
     }
 

@@ -1,7 +1,7 @@
 package com.rplsukses.ezprint.ui.dialog;
 
 import android.content.Context;
-import android.support.v7.widget.RecyclerView;
+import androidx.recyclerview.widget.RecyclerView;
 import android.text.InputType;
 
 import com.afollestad.materialdialogs.MaterialDialog;
@@ -37,6 +37,15 @@ public class DialogBuilder {
                 .inputType(InputType.TYPE_CLASS_TEXT)
                 .input(resHint, 0, false, callback)
                 .cancelable(false);
+        return builder.show();
+    }
+
+    public static MaterialDialog alertDialog(final Context ctx, String content, MaterialDialog.SingleButtonCallback callback){
+        MaterialDialog.Builder builder = new MaterialDialog.Builder(ctx)
+                .content(content)
+                .negativeText("DENY")
+                .positiveText("OK")
+                .onPositive(callback);
         return builder.show();
     }
 }
