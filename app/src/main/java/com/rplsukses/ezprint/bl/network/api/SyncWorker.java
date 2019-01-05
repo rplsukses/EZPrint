@@ -5,10 +5,13 @@ import android.util.Log;
 
 import com.rplsukses.ezprint.bl.db.dao.MitraDao;
 import com.rplsukses.ezprint.bl.db.dao.ProdukDao;
+import com.rplsukses.ezprint.bl.db.dao.TransaksiDao;
 import com.rplsukses.ezprint.bl.db.model.Mitra;
 import com.rplsukses.ezprint.bl.db.model.Produk;
+import com.rplsukses.ezprint.bl.db.model.Transaksi;
 import com.rplsukses.ezprint.bl.network.model.MitraGet;
 import com.rplsukses.ezprint.bl.network.model.ProdukGet;
+import com.rplsukses.ezprint.bl.network.model.TransaksiGet;
 import com.rplsukses.ezprint.ui.dialog.DialogBuilder;
 
 import java.sql.SQLException;
@@ -39,6 +42,7 @@ public class SyncWorker {
                         mitra.setId_mitra(list.getIdMitra());
                         mitra.setNama(list.getNama());
                         mitra.setEmail(list.getEmail());
+                        mitra.setFoto(list.getFoto());
                         mitra.setAlamat(list.getAlamat());
                         mitra.setTelepon(list.getTelepon());
                         mitra.setJam_buka(list.getJamBuka());
@@ -100,6 +104,45 @@ public class SyncWorker {
             @Override
             public void onFailure(Call<ProdukGet> call, Throwable t) {
                 Log.i("PRODUK_GET", t.getMessage());
+            }
+        });
+    }
+
+    public void syncTransaksi(final Context ctx, Call<TransaksiGet> transaksiGetCall, final boolean isFirstRun){
+        transaksiGetCall.enqueue(new Callback<TransaksiGet>() {
+            @Override
+            public void onResponse(Call<TransaksiGet> call, Response<TransaksiGet> response) {
+                if (response.isSuccessful()){
+                    TransaksiGet transaksiGet = response.body();
+                    Log.i("TRANSAKSI_GET", response.message());
+                    for (TransaksiGet.TransaksiData data : transaksiGet.getTransaksi()) {
+                        Transaksi transaksi = new Transaksi();
+                        transaksi.setId_transaksi(data.getIdTransaksi());
+                        transaksi.setId_mitra(data.getIdMitra());
+                        transaksi.setId_produk(data.getIdProduk());
+                        transaksi.setFile(data.getFile());
+                        transaksi.setStatus(data.getStatus());
+                        transaksi.setTgl_pesan(data.getTglPesan());
+                        transaksi.setTgl_selesai(data.getTglSelesai());
+                        transaksi.setHarga_total(data.getHargaTotal());
+                        transaksi.setJumlah(data.getJumlah());
+                        transaksi.setKeterangan(data.getKeterangan());
+                        try {
+                            if (isFirstRun) {
+                                TransaksiDao.getTransaksiDao().add(transaksi);
+                            }else {
+                                TransaksiDao.getTransaksiDao().save(transaksi);
+                            }
+                        } catch (SQLException e) {
+                            e.printStackTrace();
+                        }
+                    }
+                }
+            }
+
+            @Override
+            public void onFailure(Call<TransaksiGet> call, Throwable t) {
+                Log.i("TRANSAKSI_GET", t.getMessage());
             }
         });
     }

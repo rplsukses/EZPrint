@@ -3,7 +3,7 @@ package com.rplsukses.ezprint.ui.fragment;
 
 import android.content.Intent;
 import android.os.Bundle;
-import androidx.fragment.app.Fragment;
+import android.support.v4.app.Fragment;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -18,6 +18,7 @@ import com.rplsukses.ezprint.bl.network.config.RetrofitBuilder;
 import com.rplsukses.ezprint.bl.network.model.User;
 import com.rplsukses.ezprint.bl.util.PrefUtil;
 import com.rplsukses.ezprint.ui.activity.MainActivity;
+import com.rplsukses.ezprint.ui.dialog.DialogBuilder;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -90,6 +91,7 @@ public class SigninFragment extends Fragment {
     void loginAct(){
         email = etEmail.getText().toString();
         password = etPassword.getText().toString();
+        DialogBuilder.showLoadingDialog(getContext(), "Updating Data", "Please wait..", false);
         mApi.login(email, password).enqueue(new Callback<User>() {
             @Override
             public void onResponse(Call<User> call, Response<User> response) {

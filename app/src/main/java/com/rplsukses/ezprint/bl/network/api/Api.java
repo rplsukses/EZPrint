@@ -3,6 +3,7 @@ package com.rplsukses.ezprint.bl.network.api;
 import com.rplsukses.ezprint.bl.network.model.BaseRespons;
 import com.rplsukses.ezprint.bl.network.model.MitraGet;
 import com.rplsukses.ezprint.bl.network.model.ProdukGet;
+import com.rplsukses.ezprint.bl.network.model.TransaksiGet;
 import com.rplsukses.ezprint.bl.network.model.User;
 import com.rplsukses.ezprint.bl.network.config.Config;
 
@@ -40,6 +41,12 @@ public interface Api {
     @GET(Config.API_PRODUK)
     Call<ProdukGet> getProduk();
 
+    @FormUrlEncoded
+    @POST(Config.API_TRANSAKSI)
+    Call<TransaksiGet> getTransaksi(
+            @Field("id_user") Integer id_user
+    );
+
     @Multipart
     @POST(Config.API_UPLOAD_TRANS)
     Call<BaseRespons> uploadFile(
@@ -47,6 +54,7 @@ public interface Api {
             @Part("mitra") Integer mitra,
             @Part("produk") Integer produk,
             @Part("file") RequestBody name,
-            @Part MultipartBody.Part file
+            @Part MultipartBody.Part file,
+            @Part ("keterangan") String keterangan
     );
 }

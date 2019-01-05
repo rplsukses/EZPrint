@@ -12,4 +12,5 @@ public class Config {
     public static final String API_KATEGORI = API_URL + "/kategori/read.php";
     public static final String API_PRODUK = API_URL + "/produk/read.php";
     public static final String API_UPLOAD_TRANS = API_URL + "/transaksi/upload.php?apicall=upload";
+    public static final String API_TRANSAKSI = API_URL + "/transaksi/readByUser.php";
 }

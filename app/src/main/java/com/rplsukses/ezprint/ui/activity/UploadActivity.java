@@ -3,14 +3,15 @@ package com.rplsukses.ezprint.ui.activity;
 import android.content.Intent;
 import android.net.Uri;
 import android.provider.MediaStore;
-import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
-import androidx.appcompat.widget.Toolbar;
+import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.afollestad.materialdialogs.MaterialDialog;
 import com.rplsukses.ezprint.R;
 import com.rplsukses.ezprint.bl.db.model.Mitra;
 import com.rplsukses.ezprint.bl.db.model.Produk;
@@ -19,6 +20,7 @@ import com.rplsukses.ezprint.bl.network.config.RetrofitBuilder;
 import com.rplsukses.ezprint.bl.network.model.BaseRespons;
 import com.rplsukses.ezprint.bl.network.model.User;
 import com.rplsukses.ezprint.bl.util.PrefUtil;
+import com.rplsukses.ezprint.ui.dialog.DialogBuilder;
 import com.rplsukses.ezprint.ui.presenter.MitraPresenter;
 import com.rplsukses.ezprint.ui.presenter.ProdukPresenter;
 import com.rplsukses.ezprint.ui.util.RealPathUtil;
@@ -40,6 +42,7 @@ import retrofit2.Response;
 
 public class UploadActivity extends AppCompatActivity implements ProdukView, MitraView {
     public static final int PICK_FILE = 100;
+    private MaterialDialog dialog;
     private ProdukPresenter produkPresenter;
     private MitraPresenter mitraPresenter;
     private Mitra mitraActive;
@@ -55,6 +58,7 @@ public class UploadActivity extends AppCompatActivity implements ProdukView, Mit
     @BindView(R.id.activity_upload_tvMitra) TextView mTvMitra;
     @BindView(R.id.activity_upload_tvHarga) TextView mTvHarga;
     @BindView(R.id.activity_upload_etFile) EditText mEtFile;
+    @BindView(R.id.activity_upload_etKeterangan) EditText mEtKeterangan;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -103,7 +107,7 @@ public class UploadActivity extends AppCompatActivity implements ProdukView, Mit
         RequestBody requestFile = RequestBody.create(MediaType.parse(getContentResolver().getType(fileUri)), file);
         MultipartBody.Part reqFile = MultipartBody.Part.createFormData("file", file.getName(), requestFile);
 
-        mApi.uploadFile(user.getId_user(), idMitra, idProduk, filename, reqFile).enqueue(new Callback<BaseRespons>() {
+        mApi.uploadFile(user.getId_user(), idMitra, idProduk, filename, reqFile, mEtKeterangan.getText().toString()).enqueue(new Callback<BaseRespons>() {
             @Override
             public void onResponse(Call<BaseRespons> call, Response<BaseRespons> response) {
                 BaseRespons respons = response.body();
@@ -125,6 +129,7 @@ public class UploadActivity extends AppCompatActivity implements ProdukView, Mit
                 Log.i("UPLOAD_FILE", t.getMessage());
             }
         });
+        hideLoading();
     }
 
     @Override
@@ -174,12 +179,12 @@ public class UploadActivity extends AppCompatActivity implements ProdukView, Mit
 
     @Override
     public void showLoading() {
-
+        //dialog = DialogBuilder.showLoadingDialog(getApplicationContext(), "Updating Data", "Please wait..", false);
     }
 
     @Override
     public void hideLoading() {
-
+        //dialog.dismiss();
     }
 
     @Override

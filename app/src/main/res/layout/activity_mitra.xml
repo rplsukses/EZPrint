@@ -7,7 +7,7 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     tools:context=".ui.activity.MitraActivity">
-    <androidx.appcompat.widget.Toolbar
+    <android.support.v7.widget.Toolbar
         android:id="@+id/activity_mitra_toolbar"
         android:layout_width="match_parent"
         android:layout_height="?attr/actionBarSize"
@@ -22,7 +22,7 @@
         android:layout_height="match_parent"
         android:weightSum="3"
         android:orientation="vertical">
-        <androidx.cardview.widget.CardView
+        <android.support.v7.widget.CardView
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:layout_weight="0.8">
@@ -35,7 +35,7 @@
                     android:id="@+id/activity_mitra_ivIcon"
                     android:layout_width="@dimen/img_med"
                     android:layout_height="@dimen/img_med"
-                    android:src="@drawable/ic_document"/>
+                    app:srcCompat="@drawable/ic_document"/>
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
@@ -63,8 +63,8 @@
                         android:text="08:00 - 21:00"/>
                 </LinearLayout>
             </LinearLayout>
-        </androidx.cardview.widget.CardView>
-        <androidx.recyclerview.widget.RecyclerView
+        </android.support.v7.widget.CardView>
+        <android.support.v7.widget.RecyclerView
             android:id="@+id/activity_mitra_rvContent"
             android:layout_width="match_parent"
             android:layout_height="0dp"

@@ -8,12 +8,10 @@ import com.j256.ormlite.support.ConnectionSource;
 import com.j256.ormlite.table.TableUtils;
 import com.rplsukses.ezprint.bl.db.model.Mitra;
 import com.rplsukses.ezprint.bl.db.model.Produk;
+import com.rplsukses.ezprint.bl.db.model.Transaksi;
 
 import java.sql.SQLException;
 
-/**
- * Created by Nurul Chusna on 25/08/2016.
- */
 public class DbHelper extends OrmLiteSqliteOpenHelper {
     private static final int DBVER = 1;
     public static final String DBNAME = "ezprint.db";
@@ -26,6 +24,7 @@ public class DbHelper extends OrmLiteSqliteOpenHelper {
         try {
             TableUtils.createTable(connectionSource, Mitra.class);
             TableUtils.createTable(connectionSource, Produk.class);
+            TableUtils.createTable(connectionSource, Transaksi.class);
         } catch (SQLException e) {
             e.printStackTrace();
         }

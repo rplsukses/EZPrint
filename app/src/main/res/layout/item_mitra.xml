@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.cardview.widget.CardView
+<android.support.v7.widget.CardView
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
@@ -23,7 +23,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_margin="@dimen/margin_med"
-                android:src="@drawable/ic_toko"
+                app:srcCompat="@drawable/ic_toko"
                 android:scaleType="centerCrop"/>
         </com.rplsukses.ezprint.ui.custom.SquareCardView>
         <LinearLayout
@@ -53,4 +53,4 @@
                 android:text="08:00 - 21:00"/>
         </LinearLayout>
     </LinearLayout>
-</androidx.cardview.widget.CardView>
+</android.support.v7.widget.CardView>

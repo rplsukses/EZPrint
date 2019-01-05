@@ -1,7 +1,8 @@
 package com.rplsukses.ezprint.ui.dialog;
 
+
 import android.content.Context;
-import androidx.recyclerview.widget.RecyclerView;
+import android.support.v7.widget.RecyclerView;
 import android.text.InputType;
 
 import com.afollestad.materialdialogs.MaterialDialog;
@@ -23,12 +24,6 @@ public class DialogBuilder {
                 .content(content)
                 .positiveText("OK")
                 .show();
-    }
-
-    public static MaterialDialog showListDialog(Context context, RecyclerView.Adapter adapter){
-        MaterialDialog.Builder dialog = new MaterialDialog.Builder(context)
-                .adapter(adapter, null);
-        return dialog.show();
     }
 
     public static MaterialDialog showInputDialog(final Context context, int resTitle, int resHint, MaterialDialog.InputCallback callback){

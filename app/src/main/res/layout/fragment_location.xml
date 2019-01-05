@@ -7,7 +7,7 @@
     tools:context=".ui.fragment.LocationFragment">
 
     <!-- TODO: Update blank fragment layout -->
-    <androidx.recyclerview.widget.RecyclerView
+    <android.support.v7.widget.RecyclerView
         android:id="@+id/fragment_location_recyclerView"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"

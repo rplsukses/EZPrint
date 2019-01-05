@@ -5,18 +5,19 @@ import android.content.Context;
 import android.content.pm.PackageManager;
 import android.os.AsyncTask;
 import android.os.Build;
-import androidx.annotation.NonNull;
-import com.google.android.material.navigation.NavigationView;
-import com.google.android.material.tabs.TabLayout;
-import androidx.core.app.ActivityCompat;
-import androidx.core.content.ContextCompat;
-import androidx.viewpager.widget.ViewPager;
-import androidx.drawerlayout.widget.DrawerLayout;
-import androidx.appcompat.app.ActionBarDrawerToggle;
-import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
-import androidx.appcompat.widget.SearchView;
-import androidx.appcompat.widget.Toolbar;
+import android.support.annotation.NonNull;
+import android.support.design.widget.NavigationView;
+import android.support.design.widget.TabLayout;
+import android.support.v4.app.ActivityCompat;
+import android.support.v4.content.ContextCompat;
+import android.support.v4.view.MenuItemCompat;
+import android.support.v4.view.ViewPager;
+import android.support.v4.widget.DrawerLayout;
+import android.support.v7.app.ActionBarDrawerToggle;
+import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.SearchView;
+import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -26,12 +27,16 @@ import com.afollestad.materialdialogs.MaterialDialog;
 import com.rplsukses.ezprint.R;
 import com.rplsukses.ezprint.bl.db.dao.MitraDao;
 import com.rplsukses.ezprint.bl.db.dao.ProdukDao;
+import com.rplsukses.ezprint.bl.db.dao.TransaksiDao;
 import com.rplsukses.ezprint.bl.db.helper.Db;
 import com.rplsukses.ezprint.bl.db.model.Mitra;
 import com.rplsukses.ezprint.bl.db.model.Produk;
+import com.rplsukses.ezprint.bl.db.model.Transaksi;
 import com.rplsukses.ezprint.bl.network.api.Api;
 import com.rplsukses.ezprint.bl.network.api.SyncWorker;
 import com.rplsukses.ezprint.bl.network.config.RetrofitBuilder;
+import com.rplsukses.ezprint.bl.network.model.User;
+import com.rplsukses.ezprint.bl.util.PrefUtil;
 import com.rplsukses.ezprint.ui.adapter.TabAdapter;
 import com.rplsukses.ezprint.ui.dialog.DialogBuilder;
 import com.rplsukses.ezprint.ui.fragment.KategoriFragment;
@@ -40,11 +45,10 @@ import com.rplsukses.ezprint.ui.helper.DrawerMenuHelper;
 
 import java.sql.SQLException;
 import java.util.List;
-
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
-public class MainActivity extends AppCompatActivity{
+public class MainActivity extends AppCompatActivity {
     public static final int STORAGE_PERMISSION = 20;
 
     private TabAdapter mAdapter;
@@ -57,10 +61,12 @@ public class MainActivity extends AppCompatActivity{
     Toolbar mToolbar;
     @BindView(R.id.drawerLayout)
     DrawerLayout mDrawerLayout;
-    @BindView(R.id.navigationView) NavigationView mNavView;
+    @BindView(R.id.navigationView)
+    NavigationView mNavView;
 
     private Api mApi;
     private boolean isFirstRun = false;
+    private User user;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -69,6 +75,7 @@ public class MainActivity extends AppCompatActivity{
         ButterKnife.bind(this);
         Db.getInstance().init(this);
         mApi = RetrofitBuilder.builder(this).create(Api.class);
+        user = PrefUtil.getUser(this, PrefUtil.USER_SESSION);
         initialCheck();
         init();
         new DoCloudSync(this).execute();
@@ -107,7 +114,7 @@ public class MainActivity extends AppCompatActivity{
 
         MenuItem mSearch = menu.findItem(R.id.action_search);
 
-        SearchView mSearchView = (SearchView) mSearch.getActionView();
+        SearchView mSearchView = (SearchView) MenuItemCompat.getActionView(mSearch);
         mSearchView.setQueryHint("Search");
 
         mSearchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
@@ -159,6 +166,7 @@ public class MainActivity extends AppCompatActivity{
             try {
                 SyncWorker.getSyncWorker().syncMitra(ctx, mApi.getMitra(), isFirstRun);
                 SyncWorker.getSyncWorker().syncProduk(ctx, mApi.getProduk(), isFirstRun);
+                SyncWorker.getSyncWorker().syncTransaksi(ctx, mApi.getTransaksi(user.getId_user()), isFirstRun);
                 if(isFirstRun) Thread.sleep(2000);
             } catch (InterruptedException e) {
                 e.printStackTrace();
@@ -177,7 +185,8 @@ public class MainActivity extends AppCompatActivity{
         try {
             List<Mitra> mitrasCheck = MitraDao.getMitraDao().read();
             List<Produk> produksCheck = ProdukDao.getProdukDao().read();
-            isFirstRun = (mitrasCheck.isEmpty()? true : produksCheck.isEmpty()? true : false);
+            List<Transaksi> transaksisCheck = TransaksiDao.getTransaksiDao().read();
+            isFirstRun = (mitrasCheck.isEmpty()? true : produksCheck.isEmpty()? true : transaksisCheck.isEmpty()? true : false);
         } catch (SQLException e) {
             e.printStackTrace();
         }

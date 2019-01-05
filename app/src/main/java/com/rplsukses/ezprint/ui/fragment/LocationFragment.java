@@ -2,16 +2,18 @@ package com.rplsukses.ezprint.ui.fragment;
 
 
 import android.os.Bundle;
-import androidx.fragment.app.Fragment;
-import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
+import android.support.v4.app.Fragment;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.afollestad.materialdialogs.MaterialDialog;
 import com.rplsukses.ezprint.R;
 import com.rplsukses.ezprint.bl.db.model.Mitra;
 import com.rplsukses.ezprint.ui.adapter.MitraAdapter;
+import com.rplsukses.ezprint.ui.dialog.DialogBuilder;
 import com.rplsukses.ezprint.ui.presenter.MitraPresenter;
 import com.rplsukses.ezprint.ui.view.MitraView;
 
@@ -25,6 +27,7 @@ import butterknife.ButterKnife;
  * A simple {@link Fragment} subclass.
  */
 public class LocationFragment extends Fragment implements MitraView {
+    private MaterialDialog dialog;
     private MitraAdapter mAdapter;
     private MitraPresenter mitraPresenter;
     private List<Mitra> mList = new ArrayList<>();
@@ -57,12 +60,12 @@ public class LocationFragment extends Fragment implements MitraView {
 
     @Override
     public void showLoading() {
-
+        dialog = DialogBuilder.showLoadingDialog(getContext(), "Updating Data", "Please wait..", false);
     }
 
     @Override
     public void hideLoading() {
-
+        dialog.dismiss();
     }
 
     @Override

@@ -7,12 +7,12 @@
     android:orientation="vertical"
     tools:context=".ui.activity.LoginActivity">
 
-    <com.google.android.material.appbar.AppBarLayout
+    <android.support.design.widget.AppBarLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         app:theme="@style/MyToolbarTheme"
         android:background="@drawable/custom_toolbar">
-        <androidx.appcompat.widget.Toolbar
+        <android.support.v7.widget.Toolbar
             android:id="@+id/toolbar"
             android:layout_width="match_parent"
             android:layout_height="?attr/actionBarSize"
@@ -22,7 +22,7 @@
             app:layout_scrollFlags="scroll|enterAlways"
             app:title="@string/app_name"/>
 
-        <com.google.android.material.tabs.TabLayout
+        <android.support.design.widget.TabLayout
             android:id="@+id/activity_login_tabLayout"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -33,11 +33,11 @@
             app:tabSelectedTextColor="@color/white"
             app:tabIndicatorHeight="4dp"
             app:tabMode="fixed">
-        </com.google.android.material.tabs.TabLayout>
-    </com.google.android.material.appbar.AppBarLayout>
-    <androidx.viewpager.widget.ViewPager
+        </android.support.design.widget.TabLayout>
+    </android.support.design.widget.AppBarLayout>
+    <android.support.v4.view.ViewPager
         android:id="@+id/activity_login_viewPager"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
-    </androidx.viewpager.widget.ViewPager>
+    </android.support.v4.view.ViewPager>
 </LinearLayout>

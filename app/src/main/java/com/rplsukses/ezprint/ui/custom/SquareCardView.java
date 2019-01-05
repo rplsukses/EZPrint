@@ -1,7 +1,7 @@
 package com.rplsukses.ezprint.ui.custom;
 
 import android.content.Context;
-import androidx.cardview.widget.CardView;
+import android.support.v7.widget.CardView;
 import android.util.AttributeSet;
 
 public class SquareCardView extends CardView {

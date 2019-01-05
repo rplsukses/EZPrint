@@ -74,4 +74,6 @@
     <string name="batal">Batal</string>
     <string name="pilih">Pilih</string>
     <string name="help">Cari Bantuan</string>
+
+    <string name="about_us">EZPrint merupakan aplikasi berbasis mobile untuk pemesanan jasa printing secara online.</string>
 </resources>

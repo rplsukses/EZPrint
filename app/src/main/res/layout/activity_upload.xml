@@ -8,7 +8,7 @@
     android:orientation="vertical"
     tools:context=".ui.activity.UploadActivity">
 
-    <androidx.appcompat.widget.Toolbar
+    <android.support.v7.widget.Toolbar
         android:id="@+id/activity_upload_toolbar"
         android:layout_width="match_parent"
         android:layout_height="?attr/actionBarSize"
@@ -24,7 +24,7 @@
         android:layout_height="match_parent"
         android:weightSum="3"
         android:orientation="vertical">
-        <androidx.cardview.widget.CardView
+        <android.support.v7.widget.CardView
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:layout_weight="0.8"
@@ -38,7 +38,7 @@
                     android:id="@+id/activity_detail_pesanan_ivIcon"
                     android:layout_width="@dimen/img_med"
                     android:layout_height="@dimen/img_med"
-                    android:src="@drawable/ic_document"/>
+                    app:srcCompat="@drawable/ic_document"/>
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
@@ -80,7 +80,7 @@
                         android:textSize="@dimen/text_big"/>
                 </LinearLayout>
             </LinearLayout>
-        </androidx.cardview.widget.CardView>
+        </android.support.v7.widget.CardView>
         <ScrollView
             android:layout_width="match_parent"
             android:layout_height="0dp"
@@ -126,60 +126,9 @@
                         android:textColor="@color/white"
                         android:background="@drawable/custom_button_blue"/>
                 </LinearLayout>
-                <!--
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="vertical"
-                    android:background="@drawable/custom_edittext_rounded"
-                    android:layout_marginVertical="@dimen/margin_med"
-                    android:paddingHorizontal="@dimen/activity_horizontal_margin"
-                    android:paddingVertical="@dimen/margin_med">
-                    <TextView
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:text="choose file.."
-                        android:textSize="@dimen/text_med"
-                        android:drawableLeft="@drawable/ic_add_blue"
-                        android:drawablePadding="@dimen/margin_small"
-                        android:layout_marginVertical="@dimen/margin_small"/>
-                    <TextView
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:text="choose file.."
-                        android:textSize="@dimen/text_med"
-                        android:drawableLeft="@drawable/ic_add_blue"
-                        android:drawablePadding="@dimen/margin_small"
-                        android:layout_marginVertical="@dimen/margin_small"/>
-                    <TextView
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:text="choose file.."
-                        android:textSize="@dimen/text_med"
-                        android:drawableLeft="@drawable/ic_add_blue"
-                        android:drawablePadding="@dimen/margin_small"
-                        android:layout_marginVertical="@dimen/margin_small"/>
-                </LinearLayout>
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="Or"
-                    android:textSize="@dimen/text_med"
-                    android:textColor="@color/colorPrimary"
-                    android:textAlignment="center"
-                    android:layout_marginVertical="@dimen/margin_med"/>
-                <EditText
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginVertical="@dimen/margin_small"
-                    android:hint="Insert link.."
-                    android:textSize="@dimen/text_small"
-                    android:paddingHorizontal="@dimen/activity_horizontal_margin"
-                    android:paddingVertical="@dimen/margin_med"
-                    android:background="@drawable/custom_edittext_rounded"/>
-                -->
 
                 <EditText
+                    android:id="@+id/activity_upload_etKeterangan"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:hint="Keterangan.."
@@ -190,7 +139,6 @@
                     android:paddingHorizontal="@dimen/activity_horizontal_margin"
                     android:paddingVertical="@dimen/margin_med"
                     android:layout_marginVertical="@dimen/margin_med"
-                    android:focusable="false"
                     android:background="@drawable/custom_edittext_rounded"/>
                 <RelativeLayout
                     android:layout_width="match_parent"
