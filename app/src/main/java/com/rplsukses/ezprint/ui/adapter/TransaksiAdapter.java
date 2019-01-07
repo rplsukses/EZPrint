@@ -1,6 +1,7 @@
 package com.rplsukses.ezprint.ui.adapter;
 
 import android.content.Context;
+import android.content.Intent;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -17,6 +18,7 @@ import com.rplsukses.ezprint.bl.db.model.Mitra;
 import com.rplsukses.ezprint.bl.db.model.Produk;
 import com.rplsukses.ezprint.bl.db.model.Transaksi;
 import com.rplsukses.ezprint.bl.network.config.Config;
+import com.rplsukses.ezprint.ui.activity.DetailTransaksiActivity;
 import com.squareup.picasso.Picasso;
 
 import java.sql.SQLException;
@@ -37,11 +39,6 @@ public class TransaksiAdapter extends RecyclerView.Adapter<TransaksiAdapter.View
         this.ctx = ctx;
     }
 
-    public TransaksiAdapter(Context ctx, List<Mitra> mitraList) {
-        this.mitraList = mitraList;
-        this.ctx = ctx;
-    }
-
     @NonNull
     @Override
     public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
@@ -51,6 +48,7 @@ public class TransaksiAdapter extends RecyclerView.Adapter<TransaksiAdapter.View
 
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
+        holder.id_transaksi = mTransaksiList.get(position).getId_transaksi();
         Mitra mitra = new Mitra();
         try {
             mitra = MitraDao.getMitraDao().getMitraByID(mTransaksiList.get(position).getId_mitra());
@@ -60,7 +58,6 @@ public class TransaksiAdapter extends RecyclerView.Adapter<TransaksiAdapter.View
         String[] file = mTransaksiList.get(position).getFile().split("/");
         String getStatus = mTransaksiList.get(position).getStatus();
         String status = (getStatus.equals("0")? "Belum di proses" : getStatus.equals("1")? "Dalam proses" : getStatus.equals("2")? "Selesai" : "Batal");
-        SimpleDateFormat dateFormat = new SimpleDateFormat("dd MMM YY");
         Integer idProduk = mTransaksiList.get(position).getId_produk();
         Produk produk = new Produk();
         try {
@@ -92,6 +89,7 @@ public class TransaksiAdapter extends RecyclerView.Adapter<TransaksiAdapter.View
         TextView tvStatus;
         @BindView(R.id.item_order_tvTgl)
         TextView tvTgl;
+        Integer id_transaksi;
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
@@ -100,6 +98,9 @@ public class TransaksiAdapter extends RecyclerView.Adapter<TransaksiAdapter.View
 
         @OnClick(R.id.item_order_cardView) public void onClick(){
             Toast.makeText(ctx, tvFile.getText().toString(), Toast.LENGTH_SHORT).show();
+            Intent intent = new Intent(ctx, DetailTransaksiActivity.class);
+            intent.putExtra("id_transaksi", id_transaksi);
+            ctx.startActivity(intent);
         }
     }
 

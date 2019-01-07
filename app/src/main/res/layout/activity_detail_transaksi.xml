@@ -1,0 +1,142 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".ui.activity.DetailTransaksiActivity">
+
+    <android.support.v7.widget.Toolbar
+        android:id="@+id/activity_detail_trans_toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        android:background="@drawable/custom_toolbar"
+        android:gravity="center_vertical"
+        app:layout_collapseMode="pin"
+        app:layout_scrollFlags="scroll|enterAlways"
+        app:title="@string/app_name"
+        app:theme="@style/MyToolbarTheme"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:weightSum="1.1"
+        android:orientation="vertical">
+        <android.support.v7.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="0.1"
+            app:layout_collapseMode="pin">
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="horizontal"
+                android:gravity="center_vertical"
+                android:padding="@dimen/margin_small">
+                <ImageView
+                    android:id="@+id/activity_detail_pesanan_ivIcon"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    app:srcCompat="@drawable/ic_document"/>
+                <TextView
+                    android:id="@+id/activity_detail_trans_tvMitra"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Mitra"
+                    android:fontFamily="@font/vt323"
+                    android:textSize="@dimen/text_big"
+                    android:singleLine="true"
+                    android:layout_marginLeft="@dimen/margin_med"/>
+            </LinearLayout>
+        </android.support.v7.widget.CardView>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:orientation="vertical"
+            android:background="@color/bg_secondary"
+            android:padding="@dimen/margin_small">
+            <TextView
+                android:id="@+id/activity_detail_trans_tvFile"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Nama FIle"
+                android:textSize="@dimen/text_big"
+                android:fontFamily="@font/vt323"
+                android:textColor="@color/colorPrimaryDark"
+                android:layout_margin="@dimen/margin_small"/>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:gravity="center_vertical">
+                <ImageView
+                    android:id="@+id/activity_detail_trans_ivIcon"
+                    android:layout_width="@dimen/img_med"
+                    android:layout_height="@dimen/img_med"
+                    android:src="@drawable/ic_document"
+                    android:scaleType="fitCenter"/>
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:gravity="center_vertical"
+                    android:padding="@dimen/margin_small">
+                    <TextView
+                        android:id="@+id/activity_detail_trans_tvKategori"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Kategori  : dokumen"/>
+                    <TextView
+                        android:id="@+id/activity_detail_trans_tvUkuran"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Kategori  : dokumen"/>
+                    <TextView
+                        android:id="@+id/activity_detail_trans_tvBahan"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Kategori  : dokumen"/>
+                    <TextView
+                        android:id="@+id/activity_detail_trans_tvWarna"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Kategori  : dokumen"/>
+                </LinearLayout>
+            </LinearLayout>
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="2dp"
+                android:background="@color/md_divider_black"/>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:gravity="center_vertical"
+                android:layout_marginHorizontal="@dimen/activity_horizontal_margin"
+                android:layout_marginVertical="@dimen/activity_vertical_margin">
+                <TextView
+                    android:id="@+id/activity_detail_trans_tvHarga"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Harga satuan : "
+                    android:layout_marginBottom="@dimen/margin_small"/>
+                <TextView
+                    android:id="@+id/activity_detail_trans_tvJumlah"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Jumlah : "
+                    android:layout_marginBottom="@dimen/margin_small"/>
+                <TextView
+                    android:id="@+id/activity_detail_trans_tvHargaTotal"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Harga total : "
+                    android:textColor="@color/text_error"
+                    android:layout_marginBottom="@dimen/margin_small"/>
+            </LinearLayout>
+        </LinearLayout>
+    </LinearLayout>
+</LinearLayout>
