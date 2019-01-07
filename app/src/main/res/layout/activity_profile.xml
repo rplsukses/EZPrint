@@ -36,6 +36,7 @@
                 android:paddingHorizontal="@dimen/activity_horizontal_margin"
                 android:background="@drawable/custom_toolbar">
                 <de.hdodenhof.circleimageview.CircleImageView
+                    android:id="@+id/activity_profile_ivIcon"
                     android:layout_width="@dimen/img_med"
                     android:layout_height="@dimen/img_med"
                     android:src="@drawable/user"
@@ -46,10 +47,11 @@
                     android:layout_height="match_parent"
                     android:gravity="center_vertical"
                     android:paddingLeft="@dimen/activity_horizontal_margin">
-                    <TextView
+                    <EditText
                         android:id="@+id/activity_profile_tvNama"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
+                        android:inputType="textPersonName"
                         android:text="@string/app_name"
                         android:textColor="@color/white"
                         android:textSize="@dimen/text_big"
@@ -87,10 +89,11 @@
                             android:text="@string/email"
                             android:textColor="@color/colorPrimary"
                             android:layout_marginBottom="@dimen/margin_small"/>
-                        <TextView
+                        <EditText
                             android:id="@+id/activity_profile_tvEmail"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
+                            android:inputType="textEmailAddress"
                             android:text="admin@mail.com"
                             android:textSize="@dimen/text_med"
                             android:textColor="@color/colorPrimary"
@@ -113,10 +116,11 @@
                             android:text="@string/telp"
                             android:textColor="@color/colorPrimary"
                             android:layout_marginBottom="@dimen/margin_small"/>
-                        <TextView
+                        <EditText
                             android:id="@+id/activity_profile_tvTelp"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
+                            android:inputType="phone"
                             android:text="+62-822-4544-3941"
                             android:textSize="@dimen/text_med"
                             android:textColor="@color/colorPrimary"
@@ -178,21 +182,20 @@
                             android:layout_height="2dp"
                             android:background="@color/md_divider_black"/>
                     </LinearLayout>
-                    <!--
                     <RelativeLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:gravity="center"
                         android:layout_marginVertical="@dimen/activity_vertical_margin">
                         <Button
-                            android:id="@+id/activity_profile_btnLogout"
+                            android:id="@+id/activity_profile_btnSimpan"
+                            android:visibility="gone"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:background="@drawable/custom_button_blue"
                             android:textColor="@color/white"
-                            android:text="@string/logout"/>
+                            android:text="Simpan"/>
                     </RelativeLayout>
-                    -->
                 </LinearLayout>
             </ScrollView>
         </LinearLayout>
