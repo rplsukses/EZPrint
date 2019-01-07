@@ -7,11 +7,14 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.rplsukses.ezprint.R;
 import com.rplsukses.ezprint.bl.db.model.Produk;
+import com.rplsukses.ezprint.bl.network.config.Config;
 import com.rplsukses.ezprint.ui.activity.UploadActivity;
+import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -55,6 +58,7 @@ public class ProdukAdapter extends RecyclerView.Adapter<ProdukAdapter.ViewHolder
                 + produkList.get(position).getBahan()
                 + " \nWarna: "
                 + produkList.get(position).getWarna());
+        Picasso.get().load(Config.API_ICON_KATEGORI + produkList.get(position).getIcon()).into(holder.ivIcon);
     }
 
     @Override
@@ -69,6 +73,8 @@ public class ProdukAdapter extends RecyclerView.Adapter<ProdukAdapter.ViewHolder
         TextView tvHarga;
         @BindView(R.id.item_produk_tvDetail)
         TextView tvDetail;
+        @BindView(R.id.item_produk_ivIcon)
+        ImageView ivIcon;
         private int idProduk, idMitra;
 
         public ViewHolder(View itemView) {

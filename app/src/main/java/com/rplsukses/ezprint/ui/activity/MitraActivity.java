@@ -5,11 +5,13 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.rplsukses.ezprint.R;
 import com.rplsukses.ezprint.bl.db.model.Mitra;
 import com.rplsukses.ezprint.bl.db.model.Produk;
+import com.rplsukses.ezprint.bl.network.config.Config;
 import com.rplsukses.ezprint.bl.network.model.Kategori;
 import com.rplsukses.ezprint.ui.adapter.KategoriAdapter;
 import com.rplsukses.ezprint.ui.adapter.ProdukAdapter;
@@ -17,6 +19,7 @@ import com.rplsukses.ezprint.ui.presenter.MitraPresenter;
 import com.rplsukses.ezprint.ui.presenter.ProdukPresenter;
 import com.rplsukses.ezprint.ui.view.MitraView;
 import com.rplsukses.ezprint.ui.view.ProdukView;
+import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -25,7 +28,6 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 
 public class MitraActivity extends AppCompatActivity implements MitraView, ProdukView {
-    private KategoriAdapter kategoriAdapter;
     private ProdukAdapter produkAdapter;
     private MitraPresenter mitraPresenter;
     private ProdukPresenter produkPresenter;
@@ -44,6 +46,8 @@ public class MitraActivity extends AppCompatActivity implements MitraView, Produ
     RecyclerView mRvContent;
     @BindView(R.id.activity_mitra_toolbar)
     Toolbar mToolbar;
+    @BindView(R.id.activity_mitra_ivIcon)
+    ImageView mIvIcon;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -67,6 +71,7 @@ public class MitraActivity extends AppCompatActivity implements MitraView, Produ
         mTvMitra.setText(mitra.getNama());
         mTvAlamat.setText(mitra.getAlamat());
         mTvJam.setText(mitra.getJam_buka() + " - "  + mitra.getJam_tutup());
+        Picasso.get().load(Config.API_ICON_MITRA + mitra.getFoto()).into(mIvIcon);
     }
 
     private void initPresenter(){

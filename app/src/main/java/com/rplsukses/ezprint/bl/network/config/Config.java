@@ -15,4 +15,5 @@ public class Config {
     public static final String API_TRANSAKSI = API_URL + "/transaksi/readByUser.php";
     public static final String API_ICON_KATEGORI = API_URL + "/upload/kategori/";
     public static final String API_ICON_PROFILE = API_URL + "/upload/foto_user/";
+    public static final String API_ICON_MITRA = API_URL + "/upload/foto_mitra/";
 }

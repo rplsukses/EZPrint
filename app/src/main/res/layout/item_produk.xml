@@ -32,10 +32,11 @@
             android:layout_weight="1.8"
             android:padding="@dimen/activity_horizontal_margin">
             <ImageView
+                android:id="@+id/item_produk_ivIcon"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
+                android:layout_height="@dimen/img_med"
                 app:srcCompat="@drawable/ic_document"
-                android:scaleType="centerCrop"/>
+                android:scaleType="fitCenter"/>
         </RelativeLayout>
         <TextView
             android:id="@+id/item_produk_tvDetail"

@@ -12,8 +12,10 @@ import android.widget.TextView;
 
 import com.rplsukses.ezprint.R;
 import com.rplsukses.ezprint.bl.db.model.Mitra;
+import com.rplsukses.ezprint.bl.network.config.Config;
 import com.rplsukses.ezprint.ui.activity.UploadActivity;
 import com.rplsukses.ezprint.ui.activity.MitraActivity;
+import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -49,6 +51,7 @@ public class MitraAdapter extends RecyclerView.Adapter<MitraAdapter.ViewHolder>{
         holder.tvAlamat.setText(mList.get(position).getAlamat());
         holder.tvJam.setText(mList.get(position).getJam_buka() + " - " + mList.get(position).getJam_tutup());
         holder.id_mitra = mList.get(position).getId_mitra().toString();
+        Picasso.get().load(Config.API_ICON_MITRA + mList.get(position).getFoto()).into(holder.ivIcon);
     }
 
     @Override
