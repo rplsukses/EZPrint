@@ -22,13 +22,13 @@ public class TransaksiDao extends BaseDaoCrud<Transaksi, Integer>{
 
     public List<Transaksi> getOrder() throws SQLException{
         QueryBuilder<Transaksi, Integer> qb = getDao().queryBuilder();
-        qb.where().eq(Transaksi.STATUS, "0");
+        qb.where().eq(Transaksi.STATUS, "0").or().eq(Transaksi.STATUS, "1");
         return getDao().query(qb.prepare());
     }
 
     public List<Transaksi> getHistory() throws SQLException{
         QueryBuilder<Transaksi, Integer> qb = getDao().queryBuilder();
-        qb.where().eq(Transaksi.STATUS, "1").or().eq(Transaksi.STATUS, "2").or().eq(Transaksi.STATUS, "3");
+        qb.where().eq(Transaksi.STATUS, "3").or().eq(Transaksi.STATUS, "2");
         return getDao().query(qb.prepare());
     }
 }

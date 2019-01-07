@@ -11,9 +11,16 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.rplsukses.ezprint.R;
+import com.rplsukses.ezprint.bl.db.dao.MitraDao;
+import com.rplsukses.ezprint.bl.db.dao.ProdukDao;
 import com.rplsukses.ezprint.bl.db.model.Mitra;
+import com.rplsukses.ezprint.bl.db.model.Produk;
 import com.rplsukses.ezprint.bl.db.model.Transaksi;
+import com.rplsukses.ezprint.bl.network.config.Config;
+import com.squareup.picasso.Picasso;
 
+import java.sql.SQLException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -23,9 +30,15 @@ import butterknife.OnClick;
 
 public class TransaksiAdapter extends RecyclerView.Adapter<TransaksiAdapter.ViewHolder> {
     private List<Transaksi> mTransaksiList = new ArrayList<>();
+    private List<Mitra> mitraList = new ArrayList<>();
     Context ctx;
 
     public TransaksiAdapter(Context ctx) {
+        this.ctx = ctx;
+    }
+
+    public TransaksiAdapter(Context ctx, List<Mitra> mitraList) {
+        this.mitraList = mitraList;
         this.ctx = ctx;
     }
 
@@ -38,10 +51,29 @@ public class TransaksiAdapter extends RecyclerView.Adapter<TransaksiAdapter.View
 
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
-        holder.tvMitra.setText(mTransaksiList.get(position).getId_mitra().toString());
-        holder.tvStatus.setText(mTransaksiList.get(position).getStatus());
+        Mitra mitra = new Mitra();
+        try {
+            mitra = MitraDao.getMitraDao().getMitraByID(mTransaksiList.get(position).getId_mitra());
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        String[] file = mTransaksiList.get(position).getFile().split("/");
+        String getStatus = mTransaksiList.get(position).getStatus();
+        String status = (getStatus.equals("0")? "Belum di proses" : getStatus.equals("1")? "Dalam proses" : getStatus.equals("2")? "Selesai" : "Batal");
+        SimpleDateFormat dateFormat = new SimpleDateFormat("dd MMM YY");
+        Integer idProduk = mTransaksiList.get(position).getId_produk();
+        Produk produk = new Produk();
+        try {
+            produk = ProdukDao.getProdukDao().readByID(idProduk);
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+        holder.tvMitra.setText(mitra.getNama());
+        holder.tvStatus.setText(status);
         holder.tvTgl.setText(mTransaksiList.get(position).getTgl_pesan());
-        holder.tvFile.setText(mTransaksiList.get(position).getFile());
+        holder.tvFile.setText(file[3]);
+        Picasso.get().load(Config.API_ICON_KATEGORI + produk.getIcon()).into(holder.ivIcon);
     }
 
     @Override
