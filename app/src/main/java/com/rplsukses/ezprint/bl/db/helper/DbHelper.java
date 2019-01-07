@@ -6,6 +6,7 @@ import android.database.sqlite.SQLiteDatabase;
 import com.j256.ormlite.android.apptools.OrmLiteSqliteOpenHelper;
 import com.j256.ormlite.support.ConnectionSource;
 import com.j256.ormlite.table.TableUtils;
+import com.rplsukses.ezprint.bl.db.model.Kategori;
 import com.rplsukses.ezprint.bl.db.model.Mitra;
 import com.rplsukses.ezprint.bl.db.model.Produk;
 import com.rplsukses.ezprint.bl.db.model.Transaksi;
@@ -25,6 +26,7 @@ public class DbHelper extends OrmLiteSqliteOpenHelper {
             TableUtils.createTable(connectionSource, Mitra.class);
             TableUtils.createTable(connectionSource, Produk.class);
             TableUtils.createTable(connectionSource, Transaksi.class);
+            TableUtils.createTable(connectionSource, Kategori.class);
         } catch (SQLException e) {
             e.printStackTrace();
         }

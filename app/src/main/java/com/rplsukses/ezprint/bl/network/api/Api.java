@@ -1,6 +1,7 @@
 package com.rplsukses.ezprint.bl.network.api;
 
 import com.rplsukses.ezprint.bl.network.model.BaseRespons;
+import com.rplsukses.ezprint.bl.network.model.KategoriGet;
 import com.rplsukses.ezprint.bl.network.model.MitraGet;
 import com.rplsukses.ezprint.bl.network.model.ProdukGet;
 import com.rplsukses.ezprint.bl.network.model.TransaksiGet;
@@ -40,6 +41,9 @@ public interface Api {
 
     @GET(Config.API_PRODUK)
     Call<ProdukGet> getProduk();
+
+    @GET(Config.API_KATEGORI)
+    Call<KategoriGet> getKategori();
 
     @FormUrlEncoded
     @POST(Config.API_TRANSAKSI)

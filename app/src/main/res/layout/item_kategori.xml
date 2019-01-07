@@ -22,10 +22,11 @@
             android:layout_weight="1.8"
             android:padding="@dimen/activity_horizontal_margin">
             <ImageView
+                android:id="@+id/item_kategori_ivIcon"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 app:srcCompat="@drawable/ic_document"
-                android:scaleType="centerCrop"/>
+                android:scaleType="fitCenter"/>
         </RelativeLayout>
         <TextView
             android:id="@+id/item_kategori_tvKategori"

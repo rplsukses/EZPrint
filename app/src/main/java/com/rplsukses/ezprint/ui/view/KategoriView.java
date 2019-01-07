@@ -1,6 +1,7 @@
 package com.rplsukses.ezprint.ui.view;
 
-import com.rplsukses.ezprint.bl.network.model.Kategori;
+import com.rplsukses.ezprint.bl.db.model.Kategori;
+import com.rplsukses.ezprint.bl.network.model.KategoriGet;
 
 import java.util.List;
 

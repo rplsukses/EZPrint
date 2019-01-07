@@ -3,12 +3,15 @@ package com.rplsukses.ezprint.bl.network.api;
 import android.content.Context;
 import android.util.Log;
 
+import com.rplsukses.ezprint.bl.db.dao.KategoriDao;
 import com.rplsukses.ezprint.bl.db.dao.MitraDao;
 import com.rplsukses.ezprint.bl.db.dao.ProdukDao;
 import com.rplsukses.ezprint.bl.db.dao.TransaksiDao;
+import com.rplsukses.ezprint.bl.db.model.Kategori;
 import com.rplsukses.ezprint.bl.db.model.Mitra;
 import com.rplsukses.ezprint.bl.db.model.Produk;
 import com.rplsukses.ezprint.bl.db.model.Transaksi;
+import com.rplsukses.ezprint.bl.network.model.KategoriGet;
 import com.rplsukses.ezprint.bl.network.model.MitraGet;
 import com.rplsukses.ezprint.bl.network.model.ProdukGet;
 import com.rplsukses.ezprint.bl.network.model.TransaksiGet;
@@ -143,6 +146,38 @@ public class SyncWorker {
             @Override
             public void onFailure(Call<TransaksiGet> call, Throwable t) {
                 Log.i("TRANSAKSI_GET", t.getMessage());
+            }
+        });
+    }
+
+    public void syncKategori(final Context ctx, Call<KategoriGet> kategoriGetCall, final boolean isFirstRun){
+        kategoriGetCall.enqueue(new Callback<KategoriGet>() {
+            @Override
+            public void onResponse(Call<KategoriGet> call, Response<KategoriGet> response) {
+                KategoriGet kategoriGet = response.body();
+                Log.i("KATEGORI_GET", response.message());
+                for (KategoriGet.KategoriData list : kategoriGet.getKategori()){
+                    Kategori kategori = new Kategori();
+                    kategori.setId_kategori(list.getIdKategori());
+                    kategori.setKategori(list.getNama());
+                    kategori.setIcon(list.getIcon());
+
+                    try {
+                        if (isFirstRun) {
+                            KategoriDao.getKategoriDao().add(kategori);
+                        } else {
+                            KategoriDao.getKategoriDao().save(kategori);
+                        }
+                    }catch (SQLException e){
+                        e.printStackTrace();
+                    }
+                }
+            }
+
+            @Override
+            public void onFailure(Call<KategoriGet> call, Throwable t) {
+                DialogBuilder.showErrorDialog(ctx, t.getMessage());
+                Log.i("KATEGORI_GET", t.getMessage());
             }
         });
     }

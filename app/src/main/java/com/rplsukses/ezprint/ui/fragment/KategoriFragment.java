@@ -10,8 +10,10 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.rplsukses.ezprint.R;
-import com.rplsukses.ezprint.bl.network.model.Kategori;
+import com.rplsukses.ezprint.bl.db.model.Kategori;
+import com.rplsukses.ezprint.bl.network.model.KategoriGet;
 import com.rplsukses.ezprint.ui.adapter.KategoriAdapter;
+import com.rplsukses.ezprint.ui.presenter.KategoriPresenter;
 import com.rplsukses.ezprint.ui.view.KategoriView;
 
 import java.util.ArrayList;
@@ -26,6 +28,7 @@ import butterknife.ButterKnife;
  */
 public class KategoriFragment extends Fragment implements KategoriView {
     private KategoriAdapter mAdapter;
+    private KategoriPresenter kategoriPresenter;
     private List<Kategori> mList = new ArrayList<>();
 
     @BindView(R.id.fragment_kategori_recyclerView)
@@ -43,22 +46,13 @@ public class KategoriFragment extends Fragment implements KategoriView {
         View view = inflater.inflate(R.layout.fragment_kategori, container, false);
         ButterKnife.bind(this, view);
         init();
-        initData();
         return view;
     }
 
     public void init(){
+        kategoriPresenter = new KategoriPresenter(this);
         mAdapter = new KategoriAdapter(getActivity());
-        mAdapter.generate(mList);
         mRvContent.setLayoutManager(new GridLayoutManager(getActivity(), 2));
-        mRvContent.setAdapter(mAdapter);
-    }
-
-    public void initData(){
-        String[] kategori = getResources().getStringArray(R.array.list_kategori);
-        for (String s : kategori){
-            //mList.add(new Kategori(s));
-        }
     }
 
     @Override
@@ -73,6 +67,13 @@ public class KategoriFragment extends Fragment implements KategoriView {
 
     @Override
     public void loadItem(List<Kategori> kategoriList) {
+        mAdapter.generate(kategoriList);
+        mRvContent.setAdapter(mAdapter);
+    }
 
+    @Override
+    public void onResume() {
+        super.onResume();
+        kategoriPresenter.loadData();
     }
 }

@@ -47,7 +47,7 @@ public class OrderActivity extends AppCompatActivity {
         mApi = RetrofitBuilder.builder(this).create(Api.class);
         user = PrefUtil.getUser(this, PrefUtil.USER_SESSION);
         init();
-        //new DoCloudSync(this).execute();
+        new DoCloudSync(this).execute();
     }
 
     // This method to initialaze view
@@ -101,4 +101,6 @@ public class OrderActivity extends AppCompatActivity {
             dialog.dismiss();
         }
     }
+
+
 }

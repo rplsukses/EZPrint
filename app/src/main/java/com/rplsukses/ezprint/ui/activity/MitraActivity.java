@@ -12,8 +12,7 @@ import com.rplsukses.ezprint.R;
 import com.rplsukses.ezprint.bl.db.model.Mitra;
 import com.rplsukses.ezprint.bl.db.model.Produk;
 import com.rplsukses.ezprint.bl.network.config.Config;
-import com.rplsukses.ezprint.bl.network.model.Kategori;
-import com.rplsukses.ezprint.ui.adapter.KategoriAdapter;
+import com.rplsukses.ezprint.bl.network.model.KategoriGet;
 import com.rplsukses.ezprint.ui.adapter.ProdukAdapter;
 import com.rplsukses.ezprint.ui.presenter.MitraPresenter;
 import com.rplsukses.ezprint.ui.presenter.ProdukPresenter;
@@ -31,7 +30,6 @@ public class MitraActivity extends AppCompatActivity implements MitraView, Produ
     private ProdukAdapter produkAdapter;
     private MitraPresenter mitraPresenter;
     private ProdukPresenter produkPresenter;
-    private List<Kategori> mList = new ArrayList<>();
     private List<Produk> produkList = new ArrayList<>();
     private Mitra mitra;
     private Integer id_mitra;

@@ -25,10 +25,12 @@ import android.widget.Toast;
 
 import com.afollestad.materialdialogs.MaterialDialog;
 import com.rplsukses.ezprint.R;
+import com.rplsukses.ezprint.bl.db.dao.KategoriDao;
 import com.rplsukses.ezprint.bl.db.dao.MitraDao;
 import com.rplsukses.ezprint.bl.db.dao.ProdukDao;
 import com.rplsukses.ezprint.bl.db.dao.TransaksiDao;
 import com.rplsukses.ezprint.bl.db.helper.Db;
+import com.rplsukses.ezprint.bl.db.model.Kategori;
 import com.rplsukses.ezprint.bl.db.model.Mitra;
 import com.rplsukses.ezprint.bl.db.model.Produk;
 import com.rplsukses.ezprint.bl.db.model.Transaksi;
@@ -164,6 +166,7 @@ public class MainActivity extends AppCompatActivity {
         @Override
         protected Void doInBackground(Void... voids) {
             try {
+                SyncWorker.getSyncWorker().syncKategori(ctx, mApi.getKategori(), isFirstRun);
                 SyncWorker.getSyncWorker().syncMitra(ctx, mApi.getMitra(), isFirstRun);
                 SyncWorker.getSyncWorker().syncProduk(ctx, mApi.getProduk(), isFirstRun);
                 SyncWorker.getSyncWorker().syncTransaksi(ctx, mApi.getTransaksi(user.getId_user()), isFirstRun);
@@ -183,10 +186,11 @@ public class MainActivity extends AppCompatActivity {
 
     private void initialCheck(){
         try {
+            List<Kategori> kategorisCheck = KategoriDao.getKategoriDao().read();
             List<Mitra> mitrasCheck = MitraDao.getMitraDao().read();
             List<Produk> produksCheck = ProdukDao.getProdukDao().read();
             List<Transaksi> transaksisCheck = TransaksiDao.getTransaksiDao().read();
-            isFirstRun = (mitrasCheck.isEmpty()? true : produksCheck.isEmpty()? true : transaksisCheck.isEmpty()? true : false);
+            isFirstRun = (kategorisCheck.isEmpty() || mitrasCheck.isEmpty() || produksCheck.isEmpty() || transaksisCheck.isEmpty() || false);
         } catch (SQLException e) {
             e.printStackTrace();
         }

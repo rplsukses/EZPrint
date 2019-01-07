@@ -7,13 +7,17 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.afollestad.materialdialogs.MaterialDialog;
 import com.rplsukses.ezprint.R;
-import com.rplsukses.ezprint.bl.network.model.Kategori;
+import com.rplsukses.ezprint.bl.db.model.Kategori;
+import com.rplsukses.ezprint.bl.network.config.Config;
+import com.rplsukses.ezprint.bl.network.model.KategoriGet;
 import com.rplsukses.ezprint.ui.activity.KategoriMitraActivity;
 import com.rplsukses.ezprint.ui.activity.UploadActivity;
+import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -23,7 +27,7 @@ import butterknife.ButterKnife;
 import butterknife.OnClick;
 
 public class KategoriAdapter extends RecyclerView.Adapter<KategoriAdapter.ViewHolder>{
-    private List<Kategori> mKategoriList = new ArrayList<>();
+    private List<Kategori> kategoriList = new ArrayList<>();
     Context ctx;
     int flag = 0;
 
@@ -45,17 +49,20 @@ public class KategoriAdapter extends RecyclerView.Adapter<KategoriAdapter.ViewHo
 
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
-        //holder.tvTitle.setText(mKategoriList.get(position).getKategori());
+        holder.tvTitle.setText(kategoriList.get(position).getKategori());
+        Picasso.get().load(Config.API_ICON_KATEGORI + kategoriList.get(position).getIcon()).into(holder.ivIcon);
     }
 
     @Override
     public int getItemCount() {
-        return mKategoriList.size() ;
+        return kategoriList.size() ;
     }
 
     class ViewHolder extends RecyclerView.ViewHolder{
         @BindView(R.id.item_kategori_tvKategori)
         TextView tvTitle;
+        @BindView(R.id.item_kategori_ivIcon)
+        ImageView ivIcon;
 
         public ViewHolder(View itemView) {
             super(itemView);
@@ -99,14 +106,14 @@ public class KategoriAdapter extends RecyclerView.Adapter<KategoriAdapter.ViewHo
         }
     }
 
-    public void generate(List<Kategori> kategoriList) {
+    public void generate(List<Kategori> list) {
         clear();
-        this.mKategoriList = kategoriList;
+        this.kategoriList = list;
         notifyDataSetChanged();
     }
 
     public void clear() {
-        mKategoriList.clear();
+        kategoriList.clear();
         notifyDataSetChanged();
     }
 }
