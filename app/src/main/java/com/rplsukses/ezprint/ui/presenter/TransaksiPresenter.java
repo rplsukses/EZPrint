@@ -15,6 +15,16 @@ public class TransaksiPresenter {
         this.transaksiView = transaksiView;
     }
 
+    public Transaksi getByID(Integer id){
+        Transaksi transaksi = new Transaksi();
+        try {
+            transaksi = TransaksiDao.getTransaksiDao().getTransaksiByID(id);
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return transaksi;
+    }
+
     public void getOrder(){
         transaksiView.showLoading();
         List<Transaksi> list = new ArrayList<>();

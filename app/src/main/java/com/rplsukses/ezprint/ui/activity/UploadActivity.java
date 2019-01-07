@@ -8,6 +8,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -16,6 +17,7 @@ import com.rplsukses.ezprint.R;
 import com.rplsukses.ezprint.bl.db.model.Mitra;
 import com.rplsukses.ezprint.bl.db.model.Produk;
 import com.rplsukses.ezprint.bl.network.api.Api;
+import com.rplsukses.ezprint.bl.network.config.Config;
 import com.rplsukses.ezprint.bl.network.config.RetrofitBuilder;
 import com.rplsukses.ezprint.bl.network.model.BaseRespons;
 import com.rplsukses.ezprint.bl.network.model.User;
@@ -26,6 +28,7 @@ import com.rplsukses.ezprint.ui.presenter.ProdukPresenter;
 import com.rplsukses.ezprint.ui.util.RealPathUtil;
 import com.rplsukses.ezprint.ui.view.MitraView;
 import com.rplsukses.ezprint.ui.view.ProdukView;
+import com.squareup.picasso.Picasso;
 
 import java.io.File;
 import java.util.List;
@@ -59,6 +62,7 @@ public class UploadActivity extends AppCompatActivity implements ProdukView, Mit
     @BindView(R.id.activity_upload_tvHarga) TextView mTvHarga;
     @BindView(R.id.activity_upload_etFile) EditText mEtFile;
     @BindView(R.id.activity_upload_etKeterangan) EditText mEtKeterangan;
+    @BindView(R.id.activity_upload_ivIcon) ImageView mIvIcon;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -86,6 +90,7 @@ public class UploadActivity extends AppCompatActivity implements ProdukView, Mit
         mTvDetail.setText("Bahan : " + produkActive.getBahan() + "\nWarna : " + produkActive.getWarna());
         mTvMitra.setText(mitraActive.getNama());
         mTvHarga.setText(produkActive.getHarga().toString());
+        Picasso.get().load(Config.API_ICON_KATEGORI + produkActive.getIcon()).into(mIvIcon);
     }
 
     private void initPresenter(){

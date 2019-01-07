@@ -35,7 +35,7 @@
                 android:orientation="horizontal"
                 android:gravity="center_vertical">
                 <ImageView
-                    android:id="@+id/activity_detail_pesanan_ivIcon"
+                    android:id="@+id/activity_upload_ivIcon"
                     android:layout_width="@dimen/img_med"
                     android:layout_height="@dimen/img_med"
                     app:srcCompat="@drawable/ic_document"/>
